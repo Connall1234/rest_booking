@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Bar</title>
+</head>
+<body>
+
+<style>
+/* Styles for the navigation bar */
+.navbar {
+    background-color: #333; /* Background color */
+    color: #fff; /* Text color */
+    padding: 10px 0; /* Add some padding */
+}
+
+.container {
+    max-width: 1200px; /* Set max width for content */
+    margin: 0 auto; /* Center the content horizontally */
+    display: flex;
+    justify-content: space-between; /* Align content to the sides */
+    align-items: center; /* Center vertically */
+}
+
+.logo a {
+    color: #fff;
+    text-decoration: none; /* Remove underline */
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.menu ul {
+    list-style-type: none; /* Remove bullet points */
+    margin: 0;
+    padding: 0;
+}
+
+.menu ul li {
+    display: inline; /* Display menu items horizontally */
+    margin-right: 20px; /* Add spacing between menu items */
+}
+
+.menu ul li a {
+    color: #fff;
+    text-decoration: none; /* Remove underline */
+}
+
+.menu ul li a:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+</style>
+
+<nav class="navbar">
+    <div class="container">
+        <div class="logo">
+            <a href="#">Your Logo</a> <!-- nav bar element -->
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li> <!-- nav bar element -->
+                <li><a href="{% url 'menu' %}">Menu</a></li> <!-- nav bar element -->
+                <li><a href="#">Login/Signup</a></li> <!-- nav bar element -->
+                <li><a href="#">Book a table</a></li> <!-- nav bar element -->
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="content">
+    <!-- Your main content goes here -->
+    <h1>Welcome to Our Website</h1>
+    <p>This is some sample content.</p>
+</div>
+
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>

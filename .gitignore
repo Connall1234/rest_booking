@@ -7,3 +7,10 @@ __pycache__/
 node_modules/
 .github/
 cloudinary_python.txt
+*.sqlite3
+/media/
+/static/
+/rest_project/settings/local_settings.py
+/logs/
+/temp/
+/dist/
