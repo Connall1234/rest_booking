@@ -7,18 +7,18 @@
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 
-{% if form.errors %}
-<p>There was an error with your form!</p>
-{% endif %}
+
 <form method="post" action="{% url 'create_booking' %}">
     {% csrf_token %}
-    <h2>Create booking</h2>
+    <h2>Create booking check</h2>
     <label for="id_special_occasion">Special Occasion:</label>
     {{ form.special_occasion }}
     <label for="id_meal_day">Meal Day:</label>
     {{ form.meal_day }}
-    <label for="id_meal_time">Meal Time:</label>
+    <br>
+    <label for="id_meal_time" id="booked_day">Meal Time:</label>
     {{ form.meal_time }}
+    <br>
     <label for="id_number_of_guests">Number of Guests:</label>
     {{ form.number_of_guests }}
     <label for="id_customer_name">Customer Name:</label>
@@ -30,7 +30,11 @@
 
 <script>
     $(document).ready(function() {
+        // Initialize date picker for meal_day field
         $('#id_meal_day').datepicker();
+
+        // Initialize time picker for meal_time field
+        $('#id_meal_time').timepicker();
     });
 </script>
 {% endblock %}

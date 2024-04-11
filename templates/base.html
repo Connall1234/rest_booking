@@ -65,6 +65,12 @@
 .menu ul li a:hover {
     text-decoration: underline; /* Add underline on hover */
 }
+
+/* Add this to your CSS file */
+.meal-time.taken {
+    color: red;  /* Change text color to red */
+}
+
 </style>
 
 <nav class="navbar">
@@ -95,15 +101,28 @@
     <p>This is some sample content.</p>
 </div>
 
-<div class="messages">
-    {% if messages %}
+{% if messages %}
+    <ul class="messages">
         {% for message in messages %}
-            <div class="alert alert-{{ message.tags }}">
-                {{ message }}
-            </div>
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
         {% endfor %}
-    {% endif %}
+    </ul>
+{% endif %}
+
+
+{% if form.errors %}
+<div class="alert alert-danger">
+    <strong>Error!</strong> Please correct the following errors:<br>
+    <ul>
+        {% for field, errors in form.errors.items %}
+        {% for error in errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+        {% endfor %}
+    </ul>
 </div>
+{% endif %}
+
 
 
 {% block content %}

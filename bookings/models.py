@@ -6,13 +6,13 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from datetime import datetime, timedelta
 
 
-TIME_CHOICES = (
+#TIME_CHOICES = (
 
-('12:00', '12:00'),
-('13:00', '13:00'),
-('14:00', '14:00'),
+#('12:00', '12:00'),
+#('13:00', '13:00'),
+#('14:00', '14:00'),
     # Add more choices as needed
-)
+#)
 
 # This will be the class for our bookings
 class Booking(models.Model):
@@ -20,7 +20,7 @@ class Booking(models.Model):
     name = models.ForeignKey(User, on_delete=models.CASCADE)
     special_occasion = models.CharField(max_length=11, choices=[('anniversary', 'Anniversary'), ('date', 'Date'), ('business', 'Business')])
     meal_day = models.DateField()
-    meal_time = models.CharField(max_length=6, choices=TIME_CHOICES)  # Use CharField with choices
+    meal_time = models.TimeField()    
     number_of_guests = models.PositiveIntegerField(
         null=True,
         validators=[MinValueValidator(1), MaxValueValidator(6)]
