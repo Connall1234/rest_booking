@@ -26,14 +26,16 @@
 
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+
+<script>
+    $(document).ready(function() {
+        $('#id_meal_day').datepicker();
+    });
+</script>
 {% endblock %}
 
 
 <!-- Include jQuery UI CSS -->
 
 <!-- Initialize the date picker -->
-<script>
-    $(document).ready(function() {
-        $('#id_meal_day').datepicker();
-    });
-</script>
