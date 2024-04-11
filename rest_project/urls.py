@@ -23,5 +23,6 @@ urlpatterns = [
     path('', include('menu.urls')),
     path('login/', include('django.contrib.auth.urls')),
     path('login/', include('account_holders.urls')),
+    path('', include('bookings.urls')),
 
 ]

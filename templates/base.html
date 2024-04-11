@@ -78,6 +78,7 @@
                 <li><a href="{% url 'menu' %}">Menu</a></li> <!-- nav bar element -->
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'logout' %}">Logout</a></li> <!-- nav bar element -->
+                    <li><a href="{% url 'create_booking' %}">Make a booking</a></li> <!-- nav bar element -->
                 {% else %}
                     <li><a href="{% url 'login' %}">Login</a></li> <!-- nav bar element -->
                     <li><a href="{% url 'register_user' %}">Register</a></li> <!-- nav bar element -->
@@ -92,6 +93,16 @@
     <!-- Your main content goes here -->
     <h1>Welcome to Our Website</h1>
     <p>This is some sample content.</p>
+</div>
+
+<div class="messages">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
 </div>
 
 
