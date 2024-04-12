@@ -2,8 +2,6 @@
 
 {% block content %}
 
-
-
 {% if form.errors %}
 <p>There was an error with your form!</p>
 {% endif %}
@@ -16,16 +14,25 @@
 </form>
 
 {% if bookings %}
-    <ul>
+    <div class="container">
         {% for booking in bookings %}
-            <li>
-                <strong>Special Occasion:</strong> {{ booking.special_occasion }}<br>
-                <strong>Meal Day:</strong> {{ booking.meal_day }}<br>
-                <strong>Meal Time:</strong> {{ booking.meal_time }}<br>
-                <!-- Add other fields as needed -->
-            </li>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Booking Information</h5>
+                    <p class="card-text">
+                        <strong>Special Occasion:</strong> {{ booking.special_occasion }}<br>
+                        <strong>Meal Day:</strong> {{ booking.meal_day }}<br>
+                        <strong>Meal Time:</strong> {{ booking.meal_time }}<br>
+                        <!-- Add other fields as needed -->
+                    </p>
+                    <a href="{% url 'edit_booking' booking.id %}" class="btn btn-primary">Edit</a>
+                    <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger">Deleted</a>
+                </div>
+            </div>
+
+
         {% endfor %}
-    </ul>
+    </div>
 {% else %}
     <p>No bookings found.</p>
 {% endif %}

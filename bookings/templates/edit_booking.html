@@ -1,6 +1,27 @@
+User
+here is my html 
+
 {% extends "base.html" %}
 
 {% block content %}
-<p>this is the edit booking</p>
+
+<form method="post" action="{% url 'edit_booking' booking.id %}">
+    {% csrf_token %}
+    <!-- Display booking details here -->
+    <h2>Edit Booking</h2>
+    <p>Special Occasion: {{ booking.special_occasion }}</p>
+    <p>Meal Day: {{ booking.meal_day }}</p>
+    <p>Meal Time: {{ booking.meal_time }}</p>
+    <!-- Add other fields as needed -->
+    
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</form>
+
 {% endblock %}
 
+
+<!-- Include jQuery UI CSS -->
+
+<!-- Initialize the date picker -->
