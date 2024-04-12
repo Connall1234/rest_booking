@@ -85,6 +85,8 @@
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'logout' %}">Logout</a></li> <!-- nav bar element -->
                     <li><a href="{% url 'create_booking' %}">Make a booking</a></li> <!-- nav bar element -->
+                    <li><a href="{% url 'booking_list' %}">Manage a booking</a></li> <!-- nav bar element -->
+                   
                 {% else %}
                     <li><a href="{% url 'login' %}">Login</a></li> <!-- nav bar element -->
                     <li><a href="{% url 'register_user' %}">Register</a></li> <!-- nav bar element -->

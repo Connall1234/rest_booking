@@ -1,3 +1,6 @@
+User
+here is my html 
+
 {% extends "base.html" %}
 
 {% block content %}
@@ -16,13 +19,24 @@
     <label for="id_meal_day">Meal Day:</label>
     {{ form.meal_day }}
     <br>
-    <label for="id_meal_time" id="booked_day">Meal Time:</label>
-    {{ form.meal_time }}
+    <label for="id_meal_time">Meal Time:</label>
+    <select id="id_meal_time" name="meal_time">
+        {% for value, label in form.fields.meal_time.choices %}
+            {% if not value in booked_times %}
+                <option value="{{ value }}">{{ label }}</option>
+            {% else %}
+                <option value="{{ value }}" style="color: red;" disabled>{{ label }} (Booked)</option>
+            {% endif %}
+        {% endfor %}
+    </select>
     <br>
     <label for="id_number_of_guests">Number of Guests:</label>
     {{ form.number_of_guests }}
     <label for="id_customer_name">Customer Name:</label>
     {{ form.customer_name }}
+    <label for="id_customer_name">Is booked:</label>
+    {{ form.is_booked }}
+
 
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
@@ -33,8 +47,7 @@
         // Initialize date picker for meal_day field
         $('#id_meal_day').datepicker();
 
-        // Initialize time picker for meal_time field
-        $('#id_meal_time').timepicker();
+
     });
 </script>
 {% endblock %}

@@ -54,6 +54,9 @@ def delete_booking(request, booking_id):
 def booking_list(request):
     if request.user.is_superuser:
         bookings = Booking.objects.all()
+        print(bookings)
     else:
         bookings = Booking.objects.filter(name=request.user)
+        print(bookings)
+
     return render(request, 'booking_list.html', {'bookings': bookings})

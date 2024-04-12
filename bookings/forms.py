@@ -3,12 +3,11 @@ from .models import Booking
 
 class BookingForm(forms.ModelForm):
     # Define a date picker widget for the meal_day field
-    meal_day = forms.DateField(widget=forms.TextInput(attrs={'class': 'datepicker'}))
-    meal_time = forms.CharField(max_length=6, widget=forms.Select(attrs={'class': 'meal-time'}))
+
 
     class Meta:
         model = Booking
-        fields = ['special_occasion', 'meal_day', 'meal_time', 'number_of_guests', 'customer_name']
+        fields = ['special_occasion', 'meal_day', 'meal_time', 'number_of_guests', 'customer_name', 'is_booked', ]
 
     def clean(self):
         cleaned_data = super().clean()

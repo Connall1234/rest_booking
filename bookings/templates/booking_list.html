@@ -14,4 +14,20 @@
 
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+{% if bookings %}
+    <ul>
+        {% for booking in bookings %}
+            <li>
+                <strong>Special Occasion:</strong> {{ booking.special_occasion }}<br>
+                <strong>Meal Day:</strong> {{ booking.meal_day }}<br>
+                <strong>Meal Time:</strong> {{ booking.meal_time }}<br>
+                <!-- Add other fields as needed -->
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No bookings found.</p>
+{% endif %}
+
 {% endblock %}
