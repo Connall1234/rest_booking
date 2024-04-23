@@ -93,74 +93,66 @@
 {% endblock %}
 
 
-  <footer class="footer navbar-fixed-bottom bg-dark text-white pt-5 mt-2">
+<footer class="footer navbar-fixed-bottom bg-dark text-white pt-5 mt-2">
+  <div class="container text-center">
+      <row class="d-none d-sm-block">
+          <h3>Carlo's Restaurant</h3>
+          <p>Nestled in the heart of the city, our restaurant boasts an intimate ambiance and unparalleled service, inviting patrons to indulge in an unforgettable dining experience.</p>
+      </row>
+  </div>
+  <div class="container">
+      <div class="row text-center small d-flex justify-content-between">
+          <h5 class="text-uppercase font-weight-bold text-warning">Contact</h5>
+          <div class="col-md-3 col-sm-4">
+              <p>
+                  <i class="fas fa-home"></i>
+                  123 Baker Street, London, W1U 6TY
+              </p>
+          </div>
+          <div class="col-md-3 col-sm-4">
+              <p>
+                  <i class="fas fa-envelope"></i>
+                  carlosteakhouse@gmail.com
+              </p>
+          </div>
+          <div class="col-md-3 col-sm-4">
+              <p>
+                  <i class="fas fa-phone"></i>
+                  +353 85 8345774
+              </p>            
+          </div>
+          <div class="col-md-3 col-sm-4">
+              <ul class="list-unstyled row justify-content-between">
+                  <li class="col-md-4 col-sm-4">
+                      <a href="https://facebook.com" target="_blank" class="btn-floating btn-sm text-white">
+                          <i class="fab fa-facebook"></i>
+                      </a>
+                  </li>
+                  <li class="col-md-4 col-sm-4">
+                      <a href="https://twitter.com/" target="_blank" class="btn-floating btn-sm text-white">
+                          <i class="fab fa-twitter"></i>
+                      </a>
+                  </li>
+                  <li class="col-md-4 col-sm-4">
+                      <a href="https://youtube.com" target="_blank" class="btn-floating btn-sm text-white">
+                          <i class="fab fa-youtube"></i>
+                      </a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </div>
+  
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6 col-sm-12">
+              <p class="text-center text-md-left">Copyright &copy; {% now "Y" %}</p>
+          </div>
+      </div>
+  </div>
+</footer>
 
 
-    <div class="container text-center">
-        <row class="d-none d-sm-block">
-            <h3>Carlo's Restaurant</h3>
-            <p>Nestled in the heart of the city, our restaurant boasts an intimate ambiance and unparalleled service, inviting patrons to indulge in an unforgettable dining experience.</p>
-        </row>
-    </div>
-    <div class="container">
-        <div class="row text-center small d-flex justify-content-between">
-            <h5 class="text-uppercase font-weight-bold text-warning">Contact</h5>
-            <div class="col-md-3 col-sm-12">
-                <p>
-                <i class="fas fa-home"></i>
-                123 Baker Street, London, W1U 6TY
-                </p>
-            </div>
-            <div class="col-md-3 col-sm-12">
-                <p>
-                <i class="fas fa-envelope"></i>
-                carlosteakhouse@gmail.com
-                </p>
-            </div>
-            <div class="col-md-3 col-sm-12">
-                <p>
-                <i class="fas fa-phone"></i>
-                +353 85 8345774
-                </p>            
-            </div>
-        </div>
-    </div>
-    
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-sm-12">
-                <p class="text-center text-md-left">Copyright &copy; {% now "Y" %}</p>
-            </div>
-            <div class="col-md-6 col-sm-12">
-                <ul class="list-unstyled row justify-content-between">
-                    <div class="col-md-4 col-sm-4">
-                        <li class="">
-                            <a href="https://facebook.com" target="_blank" class="btn-floating btn-sm text-white">
-                                <i class="fab fa-facebook"></i>
-                            </a>
-                        </li>
-                    </div>
-                    <div class="col-md-4 col-sm-4">
-                        <li class="">
-                            <a href="https://twitter.com/" target="_blank" class="btn-floating btn-sm text-white">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                        </li>
-                    </div>
-                    <div class="col-md-4 col-sm-4">
-                        <li class="">
-                            <a href="https://youtube.com" target="_blank" class="btn-floating btn-sm text-white">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                        </li>
-                    </div>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-
-  </footer>
 
 <!-- Bootstrap JS CDN -->
 <!-- Below may need to be brought back if there are further issues -->
