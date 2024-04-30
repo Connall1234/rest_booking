@@ -6,7 +6,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 class Booking(models.Model):
     name = models.ForeignKey(User, on_delete=models.CASCADE)
-    special_occasion = models.CharField(max_length=11, choices=[('anniversary', 'Anniversary'), ('date', 'Date'), ('business', 'Business')])
+    special_occasion = models.CharField(max_length=11, choices=[('None', 'None'), ('anniversary', 'Anniversary'), ('date', 'Date'), ('business', 'Business')])
     meal_day = models.DateField()
     number_of_guests = models.PositiveIntegerField(
         null=True,

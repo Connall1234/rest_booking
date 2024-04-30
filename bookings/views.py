@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
+from django.core.paginator import Paginator
 from django.contrib import messages
 from .models import Booking
 from .forms import BookingForm
@@ -56,7 +57,13 @@ def delete_booking(request, booking_id):
 def booking_list(request):
     if request.user.is_superuser:
         bookings = Booking.objects.all()
+        p = Paginator(Booking.objects.all(), 3)
+        page = request.GET.get('page')
+        booking_list_result = p.get_page(page)
     else:
         bookings = Booking.objects.filter(name=request.user)
+        p = Paginator(Booking.objects.filter(name=request.user), 3)
+        page = request.GET.get('page')
+        booking_list_result = p.get_page(page)
 
-    return render(request, 'booking_list.html', {'bookings': bookings})
+    return render(request, 'booking_list.html', {'bookings': bookings, 'booking_list_result': booking_list_result})
