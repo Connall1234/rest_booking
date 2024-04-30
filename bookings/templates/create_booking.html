@@ -8,47 +8,11 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <body class="bg-dark"> 
-    <!--
-    <section class="section-padding bg-dark text-white">
-        <form method="post" action="{% url 'create_booking' %}">
-            {% csrf_token %}
-            <h2>Create booking check</h2>
-            <label for="id_special_occasion">Special Occasion:</label>
-            {{ form.special_occasion }}
-            <label for="id_meal_day">Meal Dayy:</label>
-            Below is for meal picker
-            {{ form.meal_day }}
-            --Above is for meal picker
-
-            <br>
-            <label for="id_meal_time">Meal Time:</label>
-            <select id="id_meal_time" name="meal_time">
-                {% for value, label in form.fields.meal_time.choices %}
-                    {% if not value in booked_times %}
-                        <option value="{{ value }}">{{ label }}</option>
-                    {% else %}
-                        <option value="{{ value }}" style="color: red;" disabled>{{ label }} (Booked)</option>
-                    {% endif %}
-                {% endfor %}
-            </select>
-            <br>
-            <label for="id_number_of_guests">Number of Guests:</label>
-            {{ form.number_of_guests }}
-            <label for="id_customer_name">Customer Name:</label>
-            {{ form.customer_name }}
-            <label for="id_customer_name">Is booked:</label>
-            {{ form.is_booked }}
-
-
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-    </section>
--->
-    <section class="section-padding">
-        <div class="container bg-dark create_book_container">
-            <form method="post" action="{% url 'create_booking' %}">
+    <section class="form_create_booking_section">
+        <div class="container bg-dark form_container">
+            <form method="post" action="{% url 'create_booking' %}" autocomplete="off">
                         {% csrf_token %}
-                        <div class="row justify-content-center text-center create_book_row content-center">
+                        <div class="row justify-content-center text-center form_row content-center">
                             <div class="col-md-12 text-center">
                                 <h2>Create Booking</h2>
                             </div>
@@ -73,7 +37,7 @@
                                 {{ form.meal_day }}
                             </div>
                             <div class="col-md-12 text-center">
-                                <label for="id_number_of_guests">Guests:</label>
+                                <label for="id_number_of_guests">Guests (max 6):</label>
                                 {{ form.number_of_guests }}
                             </div>
                             <div class="col-md-12 text-center">
@@ -87,18 +51,11 @@
             </form>
         </div>
     </section>
+    <script src="/static/js/script.js"></script>
 </body> 
 
 
 
-<script>
-    $(document).ready(function() {
-        // Initialize date picker for meal_day field
-        $('#id_meal_day').datepicker();
-
-
-    });
-</script>
 {% endblock %}
 
 

@@ -14,8 +14,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            print("HELLOEFOEFEF")
-            messages.success(request, ("you logged in!"))
+            messages.success(request, ("You Logged In!"))
 
             return redirect('index')
             # Redirect to a success page.
@@ -30,7 +29,6 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     messages.success(request, ("You're logged out!"))
-    print("Logged out")
     return redirect('index')
 
 def register_user(request):
