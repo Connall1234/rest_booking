@@ -4,6 +4,8 @@ from django.core.paginator import Paginator
 from django.contrib import messages
 from .models import Booking
 from .forms import BookingForm
+from django.db import connection
+
 
 #This is our view to create a booking, added login required decorater
 @login_required
@@ -57,13 +59,46 @@ def delete_booking(request, booking_id):
 def booking_list(request):
     if request.user.is_superuser:
         bookings = Booking.objects.all()
-        p = Paginator(Booking.objects.all(), 3)
+        p = Paginator(Booking.objects.all(), 10)
         page = request.GET.get('page')
         booking_list_result = p.get_page(page)
     else:
         bookings = Booking.objects.filter(name=request.user)
-        p = Paginator(Booking.objects.filter(name=request.user), 3)
+        p = Paginator(Booking.objects.filter(name=request.user), 10)
         page = request.GET.get('page')
         booking_list_result = p.get_page(page)
 
     return render(request, 'booking_list.html', {'bookings': bookings, 'booking_list_result': booking_list_result})
+
+
+def filterView(request):
+    qs = Booking.objects.all()
+    print(qs.query)  # Print the initial queryset SQL query
+
+    meal_time_query = request.GET.get('meal_time')
+    special_occasion_query = request.GET.get('special_occasion')
+    meal_day_query = request.GET.get('meal_day')
+    guests_query = request.GET.get('number_of_guests')
+    customer_name_query = request.GET.get('customer_name')
+
+    if meal_time_query is not None:
+        qs = qs.filter(meal_time=meal_time_query)
+    elif special_occasion_query is not None:
+        qs = qs.filter(special_occasion=special_occasion_query)
+    elif meal_day_query is not None:
+        qs = qs.filter(meal_day=meal_day_query)
+    elif guests_query is not None:
+        guests_query_int = int(guests_query)
+        qs = qs.filter(number_of_guests=guests_query_int)
+
+    elif customer_name_query is not None:
+        qs = qs.filter(customer_name__icontains=customer_name_query)
+
+    print("Second guest check:", qs)
+
+    context = {
+        'queryset': qs
+    }
+    return render(request, "booking_list.html", context)
+
+

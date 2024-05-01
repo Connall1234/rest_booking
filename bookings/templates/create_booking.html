@@ -10,7 +10,7 @@
 <body class="bg-dark"> 
     <section class="form_create_booking_section">
         <div class="container bg-dark form_container">
-            <form method="post" action="{% url 'create_booking' %}" autocomplete="off">
+            <form method="post" action="{% url 'create_booking' %}" autocomplete="off" id="create_booking_form_id">
                         {% csrf_token %}
                         <div class="row justify-content-center text-center form_row content-center">
                             <div class="col-md-12 text-center">
@@ -18,19 +18,19 @@
                             </div>
                             <div class="col-md-12 text-center">
                                 <label for="id_meal_time">Meal Time:</label>
-                                <select id="id_meal_time" name="meal_time">
+                                <select id="id_meal_time" name="meal_time" >
                                     {% for value, label in form.fields.meal_time.choices %}
-                                        {% if not value in booked_times %}
                                             <option value="{{ value }}">{{ label }}</option>
-                                        {% else %}
-                                            <option value="{{ value }}" style="color: red;" disabled>{{ label }} (Booked)</option>
-                                        {% endif %}
                                     {% endfor %}
                                 </select>
                             </div>
                             <div class="col-md-12 text-center">
                                 <label for="id_special_occasion">Special Occasion:</label>
-                                {{ form.special_occasion }}
+                                <select id="id_special_occasion" name="special_occasion">
+                                    {% for value_occ, label_occ in form.fields.special_occasion.choices %}
+                                            <option value="{{ value_occ }}">{{ label_occ }}</option>
+                                    {% endfor %}
+                                </select>
                             </div>
                             <div class="col-md-12 text-center">
                                 <label for="id_meal_day">Meal Day:</label>
