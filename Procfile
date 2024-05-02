@@ -1,1 +1,1 @@
-web: gunicorn rest_booking.wsgi --log-file -
+web: gunicorn rest_project.wsgi --log-file -
