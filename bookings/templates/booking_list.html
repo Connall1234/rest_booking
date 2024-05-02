@@ -2,52 +2,26 @@
 
 {% block content %}
 
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 
 {% if user.is_authenticated and user.is_superuser %}
 
 <div class="section-padding m-5 search_form">
     <div class="container bg-dark text-dark">
-        <form method="GET" class="needs-validation" novalidate action="{% url 'filter_view' %}">
+        <form method="GET" class="needs-validation" novalidate action="{% url 'filter_view' %}" autocomplete="off">
             {% csrf_token %}
             <div class="form-group">
                 <h1>Filter</h1>
-                <label for="meal_time">Meal Time:</label>
-                <select class="form-control" id="meal_time" name="meal_time" required>
-                    <option value="">Select Meal Time</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                </select>
-                <div class="invalid-feedback">Please select a meal time.</div>
+            <div class="form-group m-5">
+                <label for="meal_day_filter">Meal Day:</label>
+                <input id="meal_day_filter" name="meal_day" class="form-control" required>
+                <div class="invalid-feedback m-5">Please select a meal day.</div>
             </div>
-            <div class="form-group">
-                <label for="special_occasion">Special Occasion:</label>
-                <select class="form-control" id="special_occasion" name="special_occasion" required>
-                    <option value="">Select Special Occasion</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                </select>
-                <div class="invalid-feedback">Please select a special occasion.</div>
-            </div>
-            <div class="form-group">
-                <label for="meal_day">Meal Day:</label>
-                <input type="date" class="form-control" id="meal_day" name="meal_day" required>
-                <div class="invalid-feedback">Please select a meal day.</div>
-            </div>
-            <div class="form-group">
-                <label for="number_of_guests">Number of Guests:</label>
-                <input type="number" class="form-control" id="number_of_guests" name="number_of_guests" min="1" max="6" required>
-                <div class="invalid-feedback">Please enter a number between 1 and 6.</div>
-            </div>
-            <div class="form-group">
-                <label for="customer_name">Customer Name:</label>
-                <input type="text" class="form-control" id="customer_name" name="customer_name" required>
-                <div class="invalid-feedback">Please enter the customer's name.</div>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+
+            <button type="submit" class="btn btn-primary text-center">Search</button>
         </form>
     </div>
 </div>
@@ -55,19 +29,22 @@
 <hr>
 
 {% for booking in queryset %}
-<div class="card">
-    <div class="card-body">
-        <h5 class="card-title">Booking ID: {{ booking.id }}</h5>
-        <p class="card-text">Name: {{ booking.name.username }}</p>
-        <p class="card-text">Special Occasion: {{ booking.get_special_occasion_display }}</p>
-        <p class="card-text">Meal Time: {{ booking.get_meal_time_display }}</p>
-        <p class="card-text">Meal Day: {{ booking.meal_day }}</p>
-        <p class="card-text">Number of Guests: {{ booking.number_of_guests }}</p>
-        <p class="card-text">Customer Name: {{ booking.customer_name }}</p>
+    <div class="card mb-1 bg-dark text-center border border-white rounded form_container">
+        <div class="card-body">
+            <h5 class="card-title">Booking Information</h5>
+            <p class="card-text text-white">
+                <strong>Name:</strong> {{ booking.customer_name }}<br>
+                <strong>Booking no:</strong> {{ booking.pk }}<br>
+                <strong>Special Occasion:</strong> {{ booking.special_occasion }}<br>
+                <strong>Meal Day:</strong> {{ booking.meal_day }}<br>
+                <strong>Meal Time:</strong> {{ booking.meal_time }}<br>
+                <!-- Add other fields as needed -->
+            </p>
+            <a href="{% url 'edit_booking' booking.id %}" class="btn btn-primary">Edit</a>
+            <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger">Deleted</a>
+        </div>
     </div>
-</div>
 {% empty %}
-<p>No bookings found.</p>
 {% endfor %}
 {% endif %}
 
@@ -142,4 +119,6 @@
         </ul>
     </nav>
 </div>
+<script src="/static/js/script.js"></script>
+
 {% endblock %}

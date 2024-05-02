@@ -59,12 +59,12 @@ def delete_booking(request, booking_id):
 def booking_list(request):
     if request.user.is_superuser:
         bookings = Booking.objects.all()
-        p = Paginator(Booking.objects.all(), 10)
+        p = Paginator(Booking.objects.all(), 2)
         page = request.GET.get('page')
         booking_list_result = p.get_page(page)
     else:
         bookings = Booking.objects.filter(name=request.user)
-        p = Paginator(Booking.objects.filter(name=request.user), 10)
+        p = Paginator(Booking.objects.filter(name=request.user), 2)
         page = request.GET.get('page')
         booking_list_result = p.get_page(page)
 
@@ -73,32 +73,59 @@ def booking_list(request):
 
 def filterView(request):
     qs = Booking.objects.all()
-    print(qs.query)  # Print the initial queryset SQL query
+    print("\n")  # This will print a blank line
+    print("This is the query", qs.query)  # Print the initial queryset SQL query
+    print("\n")  # This will print a blank line
 
-    meal_time_query = request.GET.get('meal_time')
-    special_occasion_query = request.GET.get('special_occasion')
+
+    #meal_time_query = request.GET.get('meal_time')
+    #special_occasion_query = request.GET.get('special_occasion')
     meal_day_query = request.GET.get('meal_day')
-    guests_query = request.GET.get('number_of_guests')
-    customer_name_query = request.GET.get('customer_name')
+    #guests_query = request.GET.get('id_number_of_guests')
+    #customer_name_query = request.GET.get('customer_name')
 
-    if meal_time_query is not None:
-        qs = qs.filter(meal_time=meal_time_query)
-    elif special_occasion_query is not None:
-        qs = qs.filter(special_occasion=special_occasion_query)
-    elif meal_day_query is not None:
+    #print("/nThis is meal time query:", meal_time_query, "/n")
+    #print("/nThis is special occ query:", special_occasion_query, "/n")
+    #print("/nThis is meal day query:", meal_day_query, "/n")
+    #print("/nThis is guest query:", guests_query, "/n")
+    print("/nThis is meal day query:", meal_day_query, "/n")
+
+
+
+
+    #if meal_time_query is not None:
+        #qs = qs.filter(meal_time=meal_time_query)
+    #elif special_occasion_query is not None:
+       # qs = qs.filter(special_occasion=special_occasion_query)
+    if meal_day_query is not None:
         qs = qs.filter(meal_day=meal_day_query)
-    elif guests_query is not None:
-        guests_query_int = int(guests_query)
-        qs = qs.filter(number_of_guests=guests_query_int)
+        print("\n")  # This will print a blank line
+        print("Meal day  check:", meal_day_query)
+        print("\n")  # This will print a blank line
+        print("\n")  # This will print a blank line
+    #elif guests_query is not None:
 
-    elif customer_name_query is not None:
-        qs = qs.filter(customer_name__icontains=customer_name_query)
 
-    print("Second guest check:", qs)
+        #guests_query_int = int(guests_query)
+        ###print("\n")  # This will print a blank line
+        #print("Second guest check made into int:", guests_query_int)
+        #print("\n")  # This will print a blank line
+
+
+        #qs = qs.filter(number_of_guests=guests_query_int)
+
+    #elif customer_name_query is not None:
+
+
 
     context = {
         'queryset': qs
     }
     return render(request, "booking_list.html", context)
+
+
+
+
+
 
 

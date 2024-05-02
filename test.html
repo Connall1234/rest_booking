@@ -1,760 +1,220 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navigation Bar</title>
-    <!-- Bootstrap CSS CDN -->
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
  
-</head>
-<body>
-  
-<!-- Navbar -->
-<header>
-    <nav class="navbar fixed-top navbar-expand-sm navbar-light bg-dark p-2">
-        <a href="#" class="navbar-brand mb-0 h1 px-5 text-white">
-            Carlo's
-        </a>
-        <button type="button" class="navbar-toggler bg-white" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse text-white justify-content-end" id="navbarNav">
-            <ul class="navbar-nav px-5 text-center">
-                <li class="nav-item">
-                    <a href="{% url 'index' %}" class="nav-link text-white underline-navbar">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url 'menu' %}" class="nav-link text-white underline-navbar">Menu</a>
-                </li>
-                {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a href="{% url 'logout' %}" class="nav-link text-white underline-navbar">Logout</a>
-                    </li>
-                    <!--Last changes-->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Bookings
-                        </a>
-                        <div class="dropdown-menu bg-dark text-center p-2 fade" aria-labelledby="navbarDropdown bg-dark">
 
-                            <a href="{% url 'create_booking' %}" class="nav-link text-white dropdown-navitems">Make a booking</a>
-                            <a href="{% url 'booking_list' %}" class="nav-link text-white dropdown-navitems">Manage a booking</a>
-                        </div>
-                    </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a href="{% url 'login' %}" class="nav-link text-white underline-navbar">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{% url 'register_user' %}" class="nav-link text-white underline-navbar">Register</a>
-                    </li>
-                {% endif %}
-                <div class="button-nav-booking px-3">
-                    {% if user.is_authenticated %}
-                        <a href="{% url 'create_booking' %}" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light" data-mdb-ripple-color="dark">Make a booking!</a>
-                    {% else %}
-                        <a href="{% url 'login' %}" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light" data-mdb-ripple-color="dark">Make a booking!</a>
-                    {% endif %}
+{% extends "base.html" %}
 
-                    
-                </div>
-            </ul>
-
-        </div>
-    </nav>
-</header>
-<!-- Navbar -->
-
-{% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-{% endif %}
-
-{% if form.errors %}
-    <div class="alert alert-danger">
-        <strong>Error!</strong> Please correct the following errors:<br>
-        <ul>
-            {% for field, errors in form.errors.items %}
-                {% for error in errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            {% endfor %}
-        </ul>
-    </div>
-{% endif %}
 {% block content %}
- <!-- ======= Menu Section ======= -->
- <section id="menu" class="menu section-bg">
-    <div class="container" data-aos="fade-up">
 
-      <div class="section-title">
-        <h2>Menu</h2>
-        <p>Check Our Tasty Menu</p>
-      </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<body class="bg-dark"> 
+    <section class="form_create_booking_section">
+        <div class="container bg-dark form_container">
+            <form method="post" action="{% url 'create_booking' %}" autocomplete="off" id="create_booking_form_id">
+                        {% csrf_token %}
+                        <div class="row justify-content-center text-center form_row content-center">
+                            <div class="col-md-12 text-center">
+                                <h2>Create Booking</h2>
+                            </div>
+                            <div class="col-md-12 text-center">
+                                <label for="id_meal_time">Meal Time:</label>
+                                <select id="id_meal_time" name="meal_time" >
+                                    {% for value, label in form.fields.meal_time.choices %}
+                                            <option value="{{ value }}">{{ label }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-md-12 text-center">
+                                <label for="id_special_occasion">Special Occasion:</label>
+                                <select id="id_special_occasion" name="special_occasion">
+                                    {% for value_occ, label_occ in form.fields.special_occasion.choices %}
+                                            <option value="{{ value_occ }}">{{ label_occ }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-md-12 text-center">
+                                <label for="id_meal_day">Meal Day:</label>
+                                {{ form.meal_day }}
+                            </div>
+                            <div class="col-md-12 text-center">
+                                <label for="id_number_of_guests">Guests (max 6):</label>
+                                {{ form.number_of_guests }}
+                            </div>
+                            <div class="col-md-12 text-center">
+                                <label for="id_customer_name">Customer Name:</label>
+                                {{ form.customer_name }}
+                            </div>
+                            <div class="col-md-12 text-center">
+                                <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light" data-mdb-ripple-color="dark">Submit</button>
+                            </div>
+                        </div>
+            </form>
+        </div>
+    </section>
+    <script src="/static/js/script.js"></script>
+</body> 
 
-      <div class="row" data-aos="fade-up" data-aos-delay="100">
-        <div class="col-lg-12 d-flex justify-content-center">
-          <ul id="menu-flters">
-            <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-starters">Starters</li>
-            <li data-filter=".filter-salads">Salads</li>
-            <li data-filter=".filter-specialty">Specialty</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
-
-        <div class="col-lg-6 menu-item filter-starters">
-          <img src="assets/img/menu/lobster-bisque.jpg" class="menu-img" alt="">
-          <div class="menu-content">
-            <a href="#">Lobster Bisque</a><span>$5.95</span>
-          </div>
-          <div class="menu-ingredients">
-            Lorem, deren, trataro, filede, nerada
-          </div>
-        </div>
-
-        <div class="col-lg-6 menu-item filter-specialty">
-          <img src="assets/img/menu/bread-barrel.jpg" class="menu-img" alt="">
-          <div class="menu-content">
-            <a href="#">Bread Barrel</a><span>$6.95</span>
-          </div>
-          <div class="menu-ingredients">
-            Lorem, deren, trataro, filede, nerada
-          </div>
-        </div>
-
-        <div class="col-lg-6 menu-item filter-starters">
-          <img src="assets/img/menu/cake.jpg" class="menu-img" alt="">
-          <div class="menu-content">
-            <a href="#">Crab Cake</a><span>$7.95</span>
-          </div>
-          <div class="menu-ingredients">
-            A delicate crab cake served on a toasted roll with lettuce and tartar sauce
-          </div>
-        </div>
-
-        <div class="col-lg-6 menu-item filter-salads">
-          <img src="assets/img/menu/caesar.jpg" class="menu-img" alt="">
-          <div class="menu-content">
-            <a href="#">Caesar Selections</a><span>$8.95</span>
-          </div>
-          <div class="menu-ingredients">
-            Lorem, deren, trataro, filede, nerada
-          </div>
-        </div>
-
-        <div class="col-lg-6 menu-item filter-specialty">
-          <img src="assets/img/menu/tuscan-grilled.jpg" class="menu-img" alt="">
-          <div class="menu-content">
-            <a href="#">Tuscan Grilled</a><span>$9.95</span>
-          </div>
-          <div class="menu-ingredients">
-            Grilled chicken with provolone, artichoke hearts, and roasted red pesto
-          </div>
-        </div>
-
-        <div class="col-lg-6 menu-item filter-starters">
-          <img src="assets/img/menu/mozzarella.jpg" class="menu-img" alt="">
-          <div class="menu-content">
-            <a href="#">Mozzarella Stick</a><span>$4.95</span>
-          </div>
-          <div class="menu-ingredients">
-            Lorem, deren, trataro, filede, nerada
-          </div>
-        </div>
-
-        <div class="col-lg-6 menu-item filter-salads">
-          <img src="assets/img/menu/greek-salad.jpg" class="menu-img" alt="">
-          <div class="menu-content">
-            <a href="#">Greek Salad</a><span>$9.95</span>
-          </div>
-          <div class="menu-ingredients">
-            Fresh spinach, crisp romaine, tomatoes, and Greek olives
-          </div>
-        </div>
-
-        <div class="col-lg-6 menu-item filter-salads">
-          <img src="assets/img/menu/spinach-salad.jpg" class="menu-img" alt="">
-          <div class="menu-content">
-            <a href="#">Spinach Salad</a><span>$9.95</span>
-          </div>
-          <div class="menu-ingredients">
-            Fresh spinach with mushrooms, hard boiled egg, and warm bacon vinaigrette
-          </div>
-        </div>
-
-        <div class="col-lg-6 menu-item filter-specialty">
-          <img src="assets/img/menu/lobster-roll.jpg" class="menu-img" alt="">
-          <div class="menu-content">
-            <a href="#">Lobster Roll</a><span>$12.95</span>
-          </div>
-          <div class="menu-ingredients">
-            Plump lobster meat, mayo and crisp lettuce on a toasted bulky roll
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section><!-- End Menu Section -->
-
-
-   <!-- ======= Menu Section ======= -->
- <section id="menu" class="menu section-bg">
-  <div class="container" data-aos="fade-up">
-
-    <div class="section-title">
-      <h2>Menu</h2>
-      <p>Check Our Tasty Menu</p>
-    </div>
-
-    <div class="row" data-aos="fade-up" data-aos-delay="100">
-      <div class="col-lg-12 d-flex justify-content-center">
-        <ul id="menu-flters">
-          <li data-filter="*" class="filter-active">All</li>
-          <li data-filter=".filter-starters">Starters</li>
-          <li data-filter=".filter-salads">Salads</li>
-          <li data-filter=".filter-specialty">Specialty</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
-
-      <div class="col-lg-6 menu-item filter-starters">
-        <img src="assets/img/menu/lobster-bisque.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Lobster Bisque</a><span>$5.95</span>
-        </div>
-        <div class="menu-ingredients">
-          Lorem, deren, trataro, filede, nerada
-        </div>
-      </div>
-
-      <div class="col-lg-6 menu-item filter-specialty">
-        <img src="assets/img/menu/bread-barrel.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Bread Barrel</a><span>$6.95</span>
-        </div>
-        <div class="menu-ingredients">
-          Lorem, deren, trataro, filede, nerada
-        </div>
-      </div>
-
-      <div class="col-lg-6 menu-item filter-starters">
-        <img src="assets/img/menu/cake.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Crab Cake</a><span>$7.95</span>
-        </div>
-        <div class="menu-ingredients">
-          A delicate crab cake served on a toasted roll with lettuce and tartar sauce
-        </div>
-      </div>
-
-      <div class="col-lg-6 menu-item filter-salads">
-        <img src="assets/img/menu/caesar.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Caesar Selections</a><span>$8.95</span>
-        </div>
-        <div class="menu-ingredients">
-          Lorem, deren, trataro, filede, nerada
-        </div>
-      </div>
-
-      <div class="col-lg-6 menu-item filter-specialty">
-        <img src="assets/img/menu/tuscan-grilled.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Tuscan Grilled</a><span>$9.95</span>
-        </div>
-        <div class="menu-ingredients">
-          Grilled chicken with provolone, artichoke hearts, and roasted red pesto
-        </div>
-      </div>
-
-      <div class="col-lg-6 menu-item filter-starters">
-        <img src="assets/img/menu/mozzarella.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Mozzarella Stick</a><span>$4.95</span>
-        </div>
-        <div class="menu-ingredients">
-          Lorem, deren, trataro, filede, nerada
-        </div>
-      </div>
-
-      <div class="col-lg-6 menu-item filter-salads">
-        <img src="assets/img/menu/greek-salad.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Greek Salad</a><span>$9.95</span>
-        </div>
-        <div class="menu-ingredients">
-          Fresh spinach, crisp romaine, tomatoes, and Greek olives
-        </div>
-      </div>
-
-      <div class="col-lg-6 menu-item filter-salads">
-        <img src="assets/img/menu/spinach-salad.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Spinach Salad</a><span>$9.95</span>
-        </div>
-        <div class="menu-ingredients">
-          Fresh spinach with mushrooms, hard boiled egg, and warm bacon vinaigrette
-        </div>
-      </div>
-
-      <div class="col-lg-6 menu-item filter-specialty">
-        <img src="assets/img/menu/lobster-roll.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Lobster Roll</a><span>$12.95</span>
-        </div>
-        <div class="menu-ingredients">
-          Plump lobster meat, mayo and crisp lettuce on a toasted bulky roll
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-</section><!-- End Menu Section -->
-
-
-
- <!-- ======= Menu Section ======= -->
- <section id="menu" class="menu section-bg">
-  <div class="container" data-aos="fade-up">
-
-    <div class="section-title">
-      <h2>Menu</h2>
-      <p>Check Our Tasty Menu</p>
-    </div>
-
-    <div class="row" data-aos="fade-up" data-aos-delay="100">
-      <div class="col-lg-12 d-flex justify-content-center">
-        <ul id="menu-flters">
-          <li data-filter="*" class="filter-active">All</li>
-          <li data-filter=".filter-starters">Starters</li>
-          <li data-filter=".filter-salads">Salads</li>
-          <li data-filter=".filter-specialty">Specialty</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
-
-      <div class="col-lg-6 menu-item filter-starters">
-        <img src="assets/img/menu/lobster-bisque.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Lobster Bisque</a><span>$5.95</span>
-        </div>
-        <div class="menu-ingredients">
-          Lorem, deren, trataro, filede, nerada
-        </div>
-      </div>
-
-      <div class="col-lg-6 menu-item filter-specialty">
-        <img src="assets/img/menu/bread-barrel.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Bread Barrel</a><span>$6.95</span>
-        </div>
-        <div class="menu-ingredients">
-          Lorem, deren, trataro, filede, nerada
-        </div>
-      </div>
-
-      <div class="col-lg-6 menu-item filter-starters">
-        <img src="assets/img/menu/cake.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Crab Cake</a><span>$7.95</span>
-        </div>
-        <div class="menu-ingredients">
-          A delicate crab cake served on a toasted roll with lettuce and tartar sauce
-        </div>
-      </div>
-
-      <div class="col-lg-6 menu-item filter-salads">
-        <img src="assets/img/menu/caesar.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Caesar Selections</a><span>$8.95</span>
-        </div>
-        <div class="menu-ingredients">
-          Lorem, deren, trataro, filede, nerada
-        </div>
-      </div>
-
-      <div class="col-lg-6 menu-item filter-specialty">
-        <img src="assets/img/menu/tuscan-grilled.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Tuscan Grilled</a><span>$9.95</span>
-        </div>
-        <div class="menu-ingredients">
-          Grilled chicken with provolone, artichoke hearts, and roasted red pesto
-        </div>
-      </div>
-
-      <div class="col-lg-6 menu-item filter-starters">
-        <img src="assets/img/menu/mozzarella.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Mozzarella Stick</a><span>$4.95</span>
-        </div>
-        <div class="menu-ingredients">
-          Lorem, deren, trataro, filede, nerada
-        </div>
-      </div>
-
-      <div class="col-lg-6 menu-item filter-salads">
-        <img src="assets/img/menu/greek-salad.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Greek Salad</a><span>$9.95</span>
-        </div>
-        <div class="menu-ingredients">
-          Fresh spinach, crisp romaine, tomatoes, and Greek olives
-        </div>
-      </div>
-
-      <div class="col-lg-6 menu-item filter-salads">
-        <img src="assets/img/menu/spinach-salad.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Spinach Salad</a><span>$9.95</span>
-        </div>
-        <div class="menu-ingredients">
-          Fresh spinach with mushrooms, hard boiled egg, and warm bacon vinaigrette
-        </div>
-      </div>
-
-      <div class="col-lg-6 menu-item filter-specialty">
-        <img src="assets/img/menu/lobster-roll.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Lobster Roll</a><span>$12.95</span>
-        </div>
-        <div class="menu-ingredients">
-          Plump lobster meat, mayo and crisp lettuce on a toasted bulky roll
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-</section><!-- End Menu Section -->
-
-
-
- <!-- ======= Menu Section ======= -->
- <section id="menu" class="menu section-bg">
-  <div class="container" data-aos="fade-up">
-
-    <div class="section-title">
-      <h2>Menu</h2>
-      <p>Check Our Tasty Menu</p>
-    </div>
-
-    <div class="row" data-aos="fade-up" data-aos-delay="100">
-      <div class="col-lg-12 d-flex justify-content-center">
-        <ul id="menu-flters">
-          <li data-filter="*" class="filter-active">All</li>
-          <li data-filter=".filter-starters">Starters</li>
-          <li data-filter=".filter-salads">Salads</li>
-          <li data-filter=".filter-specialty">Specialty</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
-
-      <div class="col-lg-6 menu-item filter-starters">
-        <img src="assets/img/menu/lobster-bisque.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Lobster Bisque</a><span>$5.95</span>
-        </div>
-        <div class="menu-ingredients">
-          Lorem, deren, trataro, filede, nerada
-        </div>
-      </div>
-
-      <div class="col-lg-6 menu-item filter-specialty">
-        <img src="assets/img/menu/bread-barrel.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Bread Barrel</a><span>$6.95</span>
-        </div>
-        <div class="menu-ingredients">
-          Lorem, deren, trataro, filede, nerada
-        </div>
-      </div>
-
-      <div class="col-lg-6 menu-item filter-starters">
-        <img src="assets/img/menu/cake.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Crab Cake</a><span>$7.95</span>
-        </div>
-        <div class="menu-ingredients">
-          A delicate crab cake served on a toasted roll with lettuce and tartar sauce
-        </div>
-      </div>
-
-      <div class="col-lg-6 menu-item filter-salads">
-        <img src="assets/img/menu/caesar.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Caesar Selections</a><span>$8.95</span>
-        </div>
-        <div class="menu-ingredients">
-          Lorem, deren, trataro, filede, nerada
-        </div>
-      </div>
-
-      <div class="col-lg-6 menu-item filter-specialty">
-        <img src="assets/img/menu/tuscan-grilled.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Tuscan Grilled</a><span>$9.95</span>
-        </div>
-        <div class="menu-ingredients">
-          Grilled chicken with provolone, artichoke hearts, and roasted red pesto
-        </div>
-      </div>
-
-      <div class="col-lg-6 menu-item filter-starters">
-        <img src="assets/img/menu/mozzarella.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Mozzarella Stick</a><span>$4.95</span>
-        </div>
-        <div class="menu-ingredients">
-          Lorem, deren, trataro, filede, nerada
-        </div>
-      </div>
-
-      <div class="col-lg-6 menu-item filter-salads">
-        <img src="assets/img/menu/greek-salad.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Greek Salad</a><span>$9.95</span>
-        </div>
-        <div class="menu-ingredients">
-          Fresh spinach, crisp romaine, tomatoes, and Greek olives
-        </div>
-      </div>
-
-      <div class="col-lg-6 menu-item filter-salads">
-        <img src="assets/img/menu/spinach-salad.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Spinach Salad</a><span>$9.95</span>
-        </div>
-        <div class="menu-ingredients">
-          Fresh spinach with mushrooms, hard boiled egg, and warm bacon vinaigrette
-        </div>
-      </div>
-
-      <div class="col-lg-6 menu-item filter-specialty">
-        <img src="assets/img/menu/lobster-roll.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Lobster Roll</a><span>$12.95</span>
-        </div>
-        <div class="menu-ingredients">
-          Plump lobster meat, mayo and crisp lettuce on a toasted bulky roll
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-</section><!-- End Menu Section -->
-
-
-
- <!-- ======= Menu Section ======= -->
- <section id="menu" class="menu section-bg">
-  <div class="container" data-aos="fade-up">
-
-    <div class="section-title">
-      <h2>Menu</h2>
-      <p>Check Our Tasty Menu</p>
-    </div>
-
-    <div class="row" data-aos="fade-up" data-aos-delay="100">
-      <div class="col-lg-12 d-flex justify-content-center">
-        <ul id="menu-flters">
-          <li data-filter="*" class="filter-active">All</li>
-          <li data-filter=".filter-starters">Starters</li>
-          <li data-filter=".filter-salads">Salads</li>
-          <li data-filter=".filter-specialty">Specialty</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
-
-      <div class="col-lg-6 menu-item filter-starters">
-        <img src="assets/img/menu/lobster-bisque.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Lobster Bisque</a><span>$5.95</span>
-        </div>
-        <div class="menu-ingredients">
-          Lorem, deren, trataro, filede, nerada
-        </div>
-      </div>
-
-      <div class="col-lg-6 menu-item filter-specialty">
-        <img src="assets/img/menu/bread-barrel.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Bread Barrel</a><span>$6.95</span>
-        </div>
-        <div class="menu-ingredients">
-          Lorem, deren, trataro, filede, nerada
-        </div>
-      </div>
-
-      <div class="col-lg-6 menu-item filter-starters">
-        <img src="assets/img/menu/cake.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Crab Cake</a><span>$7.95</span>
-        </div>
-        <div class="menu-ingredients">
-          A delicate crab cake served on a toasted roll with lettuce and tartar sauce
-        </div>
-      </div>
-
-      <div class="col-lg-6 menu-item filter-salads">
-        <img src="assets/img/menu/caesar.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Caesar Selections</a><span>$8.95</span>
-        </div>
-        <div class="menu-ingredients">
-          Lorem, deren, trataro, filede, nerada
-        </div>
-      </div>
-
-      <div class="col-lg-6 menu-item filter-specialty">
-        <img src="assets/img/menu/tuscan-grilled.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Tuscan Grilled</a><span>$9.95</span>
-        </div>
-        <div class="menu-ingredients">
-          Grilled chicken with provolone, artichoke hearts, and roasted red pesto
-        </div>
-      </div>
-
-      <div class="col-lg-6 menu-item filter-starters">
-        <img src="assets/img/menu/mozzarella.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Mozzarella Stick</a><span>$4.95</span>
-        </div>
-        <div class="menu-ingredients">
-          Lorem, deren, trataro, filede, nerada
-        </div>
-      </div>
-
-      <div class="col-lg-6 menu-item filter-salads">
-        <img src="assets/img/menu/greek-salad.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Greek Salad</a><span>$9.95</span>
-        </div>
-        <div class="menu-ingredients">
-          Fresh spinach, crisp romaine, tomatoes, and Greek olives
-        </div>
-      </div>
-
-      <div class="col-lg-6 menu-item filter-salads">
-        <img src="assets/img/menu/spinach-salad.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Spinach Salad</a><span>$9.95</span>
-        </div>
-        <div class="menu-ingredients">
-          Fresh spinach with mushrooms, hard boiled egg, and warm bacon vinaigrette
-        </div>
-      </div>
-
-      <div class="col-lg-6 menu-item filter-specialty">
-        <img src="assets/img/menu/lobster-roll.jpg" class="menu-img" alt="">
-        <div class="menu-content">
-          <a href="#">Lobster Roll</a><span>$12.95</span>
-        </div>
-        <div class="menu-ingredients">
-          Plump lobster meat, mayo and crisp lettuce on a toasted bulky roll
-        </div>
-      </div>
-
-    </div>
 
-  </div>
-</section><!-- End Menu Section -->
 
 {% endblock %}
 
 
-<footer class="footer navbar-fixed-bottom bg-dark text-white pt-5 mt-2">
-  <div class="container text-center">
-      <row class="d-none d-sm-block">
-          <h3>Carlo's Restaurant</h3>
-          <p>Nestled in the heart of the city, our restaurant boasts an intimate ambiance and unparalleled service, inviting patrons to indulge in an unforgettable dining experience.</p>
-      </row>
-  </div>
-  <div class="container">
-      <div class="row text-center small d-flex justify-content-between">
-          <h5 class="text-uppercase font-weight-bold text-warning">Contact</h5>
-          <div class="col-md-3 col-sm-4">
-              <p>
-                  <i class="fas fa-home"></i>
-                  123 Baker Street, London, W1U 6TY
-              </p>
-          </div>
-          <div class="col-md-3 col-sm-4">
-              <p>
-                  <i class="fas fa-envelope"></i>
-                  carlosteakhouse@gmail.com
-              </p>
-          </div>
-          <div class="col-md-3 col-sm-4">
-              <p>
-                  <i class="fas fa-phone"></i>
-                  +353 85 8345774
-              </p>            
-          </div>
-          <div class="col-md-3 col-sm-4">
-              <ul class="list-unstyled row justify-content-between">
-                  <li class="col-md-4 col-sm-4">
-                      <a href="https://facebook.com" target="_blank" class="btn-floating btn-sm text-white">
-                          <i class="fab fa-facebook"></i>
-                      </a>
-                  </li>
-                  <li class="col-md-4 col-sm-4">
-                      <a href="https://twitter.com/" target="_blank" class="btn-floating btn-sm text-white">
-                          <i class="fab fa-twitter"></i>
-                      </a>
-                  </li>
-                  <li class="col-md-4 col-sm-4">
-                      <a href="https://youtube.com" target="_blank" class="btn-floating btn-sm text-white">
-                          <i class="fab fa-youtube"></i>
-                      </a>
-                  </li>
-              </ul>
-          </div>
-      </div>
-  </div>
-  
-  <div class="container">
-      <div class="row">
-          <div class="col-md-6 col-sm-12">
-              <p class="text-center text-md-left">Copyright &copy; {% now "Y" %}</p>
-          </div>
-      </div>
-  </div>
-</footer>
+<!-- Include jQuery UI CSS -->
+
+<!-- Initialize the date picker -->
 
 
 
-<!-- Bootstrap JS CDN -->
-<!-- Below may need to be brought back if there are further issues -->
-<!--
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+I6J46fXn2XT7u8MkK/IsLq2R/HJgY+2KR7pJ2f" crossorigin="anonymous"></script>
--->
-<!-- Above may need to be brought back if there are further issues -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 
+{% if user.is_authenticated and user.is_superuser %}
+
+<div class="section-padding m-5 search_form">
+    <div class="container bg-dark text-dark">
+        <form method="GET" class="needs-validation" novalidate action="{% url 'filter_view' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <h1>Filter</h1>
+                <label for="meal_time">Meal Time:</label>
+                <select class="form-control" id="meal_time" name="meal_time" required>
+                    <option value="">Select Meal Time</option>
+                    <option value="1">Meal time one</option>
+                    <option value="2">Meal time two</option>
+                    <option value="3">Meal time three</option>
+                </select>
+                <div class="invalid-feedback">Please select a meal time.</div>
+            </div>
+            <div class="form-group">
+                <label for="special_occasion">Special Occasion:</label>
+                <select class="form-control" id="special_occasion" name="special_occasion" required>
+                    <option value="">Select Special Occasion</option>
+                    <option value="1">Special occ one</option>
+                    <option value="2">Special occ two</option>
+                    <option value="3">Special occ three</option>
+                </select>
+                <div class="invalid-feedback">Please select a special occasion.</div>
+            </div>
+            <div class="form-group">
+                <label for="meal_day_filter">Meal Day:</label>
+                <input id="meal_day_filter" name="meal_day" class="form-control" required>
+                <div class="invalid-feedback">Please select a meal day.</div>
+            </div>
+            <div class="form-group">
+                <label for="number_of_guests">Number of Guests:</label>
+                <input type="number" class="form-control" id="id_number_of_guests" name="number_of_guests" min="1" max="6" required>
+                <div class="invalid-feedback">Please enter a number between 1 and 6.</div>
+            </div>
+            <div class="form-group">
+                <label for="customer_name">Customer Name:</label>
+                <input type="text" class="form-control" id="customer_name" name="customer_name" required>
+                <div class="invalid-feedback">Please enter the customer's name.</div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+<hr>
+
+{% for booking in queryset %}
+    <div class="card mb-1 bg-dark text-center border border-white rounded form_container">
+        <div class="card-body">
+            <h5 class="card-title">Booking Information</h5>
+            <p class="card-text text-white">
+                <strong>Name:</strong> {{ booking.customer_name }}<br>
+                <strong>Booking no:</strong> {{ booking.pk }}<br>
+                <strong>Special Occasion:</strong> {{ booking.special_occasion }}<br>
+                <strong>Meal Day:</strong> {{ booking.meal_day }}<br>
+                <strong>Meal Time:</strong> {{ booking.meal_time }}<br>
+                <!-- Add other fields as needed -->
+            </p>
+            <a href="{% url 'edit_booking' booking.id %}" class="btn btn-primary">Edit</a>
+            <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger">Deleted</a>
+        </div>
+    </div>
+{% empty %}
+{% endfor %}
+{% endif %}
+
+
+
+
+
+{% if bookings %}
+    <div class="container list_booking">
+        {% for booking in booking_list_result %}
+            <div class="card mb-1 bg-dark text-center border border-white rounded form_container">
+                <div class="card-body">
+                    <h5 class="card-title">Booking Information</h5>
+                    <p class="card-text text-white">
+                        <strong>Name:</strong> {{ booking.customer_name }}<br>
+                        <strong>Booking no:</strong> {{ booking.pk }}<br>
+                        <strong>Special Occasion:</strong> {{ booking.special_occasion }}<br>
+                        <strong>Meal Day:</strong> {{ booking.meal_day }}<br>
+                        <strong>Meal Time:</strong> {{ booking.meal_time }}<br>
+                        <!-- Add other fields as needed -->
+                    </p>
+                    <a href="{% url 'edit_booking' booking.id %}" class="btn btn-primary">Edit</a>
+                    <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger">Deleted</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="container list_booking text-center">
+        <h5>No bookings found, click below to book with us!</h5>
+        {% if user.is_authenticated %}
+        <a href="{% url 'create_booking' %}" type="button" class="btn btn-warning btn-rounded " data-mdb-ripple-init>Make a booking!</a>
+        {% else %}
+        <a href="{% url 'login' %}" type="button" class="btn btn-warning btn-rounded " data-mdb-ripple-init>Make a booking!</a>
+        {% endif %}
+    </div>
+{% endif %}
+<div class="text-white">
+
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if booking_list_result.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page=1" aria-label="First">
+                        &laquo; First
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ booking_list_result.previous_page_number }}" aria-label="Previous">
+                        Previous
+                    </a>
+                </li>
+            {% endif %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">
+                    Page {{ booking_list_result.number }} of {{ booking_list_result.paginator.num_pages }}
+                </a>
+            </li>
+
+            {% if booking_list_result.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ booking_list_result.next_page_number }}" aria-label="Next">
+                        Next
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ booking_list_result.paginator.num_pages }}" aria-label="Last">
+                        Last &raquo;
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+<script src="/static/js/script.js"></script>
+
+{% endblock %}
 
