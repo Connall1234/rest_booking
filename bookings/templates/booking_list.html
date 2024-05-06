@@ -9,41 +9,44 @@
 
 {% if user.is_authenticated and user.is_superuser %}
 
-<div class="section-padding m-5 search_form">
-    <div class="container bg-dark text-dark">
+<div class="section-padding search_form container">
+    <div class="container bg-dark text-dark text-center">
         <form method="GET" class="needs-validation" novalidate action="{% url 'filter_view' %}" autocomplete="off">
             {% csrf_token %}
             <div class="form-group">
                 <h1>Filter</h1>
-            <div class="form-group m-5">
+            <div class="form-group m-5 row justify-content-center">
                 <label for="meal_day_filter">Meal Day:</label>
-                <input id="meal_day_filter" name="meal_day" class="form-control" required>
+                <input id="meal_day_filter" name="meal_day" class="form-control col-6 text-center" required>
                 <div class="invalid-feedback m-5">Please select a meal day.</div>
             </div>
 
             <button type="submit" class="btn btn-primary text-center">Search</button>
+            <a href="{% url 'booking_list' %}" class="btn btn-danger">Reset</a>
+
         </form>
     </div>
 </div>
 
 <hr>
 
-{% for booking in queryset %}
-    <div class="card mb-1 bg-dark text-center border border-white rounded form_container">
-        <div class="card-body">
-            <h5 class="card-title">Booking Information</h5>
-            <p class="card-text text-white">
-                <strong>Name:</strong> {{ booking.customer_name }}<br>
-                <strong>Booking no:</strong> {{ booking.pk }}<br>
-                <strong>Special Occasion:</strong> {{ booking.special_occasion }}<br>
-                <strong>Meal Day:</strong> {{ booking.meal_day }}<br>
-                <strong>Meal Time:</strong> {{ booking.meal_time }}<br>
-                <!-- Add other fields as needed -->
-            </p>
-            <a href="{% url 'edit_booking' booking.id %}" class="btn btn-primary">Edit</a>
-            <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger">Deleted</a>
+<div class="container list_booking">
+    {% for booking in queryset %}
+        <div class="card mb-1 bg-dark text-center border border-white rounded form_container">
+            <div class="card-body">
+                <h5 class="card-title">Booking Information</h5>
+                <p class="card-text text-white">
+                    <strong>Name:</strong> {{ booking.customer_name }}<br>
+                    <strong>Booking no:</strong> {{ booking.pk }}<br>
+                    <strong>Special Occasion:</strong> {{ booking.special_occasion|capfirst }}<br>
+                    <strong>Meal Day:</strong> {{ booking.meal_day }}<br>
+                    <strong>Meal Time:</strong> {{ booking.meal_time }}<br>
+                    <!-- Add other fields as needed -->
+                </p>
+                <a href="{% url 'edit_booking' booking.id %}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger">Delete</a>
+            </div>
         </div>
-    </div>
 {% empty %}
 {% endfor %}
 {% endif %}
@@ -61,13 +64,13 @@
                     <p class="card-text text-white">
                         <strong>Name:</strong> {{ booking.customer_name }}<br>
                         <strong>Booking no:</strong> {{ booking.pk }}<br>
-                        <strong>Special Occasion:</strong> {{ booking.special_occasion }}<br>
+                        <strong>Special Occasion:</strong> {{ booking.special_occasion|capfirst }}<br>
                         <strong>Meal Day:</strong> {{ booking.meal_day }}<br>
                         <strong>Meal Time:</strong> {{ booking.meal_time }}<br>
                         <!-- Add other fields as needed -->
                     </p>
                     <a href="{% url 'edit_booking' booking.id %}" class="btn btn-primary">Edit</a>
-                    <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger">Deleted</a>
+                    <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger">Delete</a>
                 </div>
             </div>
         {% endfor %}

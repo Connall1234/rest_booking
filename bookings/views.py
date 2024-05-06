@@ -73,48 +73,16 @@ def booking_list(request):
 
 def filterView(request):
     qs = Booking.objects.all()
-    print("\n")  # This will print a blank line
-    print("This is the query", qs.query)  # Print the initial queryset SQL query
-    print("\n")  # This will print a blank line
 
-
-    #meal_time_query = request.GET.get('meal_time')
-    #special_occasion_query = request.GET.get('special_occasion')
     meal_day_query = request.GET.get('meal_day')
-    #guests_query = request.GET.get('id_number_of_guests')
-    #customer_name_query = request.GET.get('customer_name')
-
-    #print("/nThis is meal time query:", meal_time_query, "/n")
-    #print("/nThis is special occ query:", special_occasion_query, "/n")
-    #print("/nThis is meal day query:", meal_day_query, "/n")
-    #print("/nThis is guest query:", guests_query, "/n")
+ 
     print("/nThis is meal day query:", meal_day_query, "/n")
 
 
-
-
-    #if meal_time_query is not None:
-        #qs = qs.filter(meal_time=meal_time_query)
-    #elif special_occasion_query is not None:
-       # qs = qs.filter(special_occasion=special_occasion_query)
     if meal_day_query is not None:
         qs = qs.filter(meal_day=meal_day_query)
-        print("\n")  # This will print a blank line
-        print("Meal day  check:", meal_day_query)
-        print("\n")  # This will print a blank line
-        print("\n")  # This will print a blank line
-    #elif guests_query is not None:
 
-
-        #guests_query_int = int(guests_query)
-        ###print("\n")  # This will print a blank line
-        #print("Second guest check made into int:", guests_query_int)
-        #print("\n")  # This will print a blank line
-
-
-        #qs = qs.filter(number_of_guests=guests_query_int)
-
-    #elif customer_name_query is not None:
+  
 
 
 
