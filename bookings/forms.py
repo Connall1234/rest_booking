@@ -7,7 +7,7 @@ class BookingForm(forms.ModelForm):
 
     class Meta:
         model = Booking
-        fields = ['special_occasion', 'meal_day', 'meal_time', 'number_of_guests', 'customer_name', 'is_booked', ]
+        fields = ['special_occasion', 'meal_day', 'meal_time', 'number_of_guests', 'customer_name', ]
 
     def clean(self):
         cleaned_data = super().clean()

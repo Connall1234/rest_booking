@@ -89,20 +89,19 @@ WSGI_APPLICATION = 'rest_project.wsgi.application'
   #  }
 #}
 
-DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
-}
-
-
-#check 
-#db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
-
-# Database configuration
 #DATABASES = {
     #'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
 #}
 
-#print("Database configuration:", db_from_env)
+
+#check 
+db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
+
+DATABASES = {
+    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
+}
+
+print("Database configuration:", db_from_env)
 
 
 # Password validation
@@ -147,3 +146,21 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGGING = {
+    'version': 1,
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        '': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}

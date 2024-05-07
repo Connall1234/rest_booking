@@ -11,11 +11,19 @@ from django.db import connection
 @login_required
 def create_booking(request):
     if request.method == 'POST':
+        print("Form Data:", request.POST)
+
         form = BookingForm(request.POST)
         if form.is_valid():
+            print("\nForm Data check two:", request.POST, "\n")
+
             booking = form.save(commit=False)
             booking.name = request.user
             booking.save()
+            print("\nBooking saved:", request.POST, "\n")
+            print("\nBooking name:", booking, "\n")
+
+
             messages.success(request, 'Booking created successfully!')
             return redirect('booking_list')  # Change to to booking list page
     else:
@@ -30,6 +38,7 @@ def edit_booking(request, booking_id):
         return redirect('booking_list')  # Change to booking list page
     
     if request.method == 'POST':
+        print("Form Data:", request.POST)
         form = BookingForm(request.POST, instance=booking)
 
         if form.is_valid():
@@ -60,7 +69,7 @@ def delete_booking(request, booking_id):
 def booking_list(request):
     if request.user.is_superuser:
         bookings = Booking.objects.all()
-        p = Paginator(Booking.objects.all(), 2)
+        p = Paginator(Booking.objects.all(), 10)
         page = request.GET.get('page')
         booking_list_result = p.get_page(page)
     else:

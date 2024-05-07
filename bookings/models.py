@@ -13,19 +13,6 @@ class Booking(models.Model):
         validators=[MinValueValidator(1), MaxValueValidator(6)]
     )
     customer_name = models.CharField(max_length=50)
-    is_booked = models.BooleanField(default=False)  # Indicates whether the time slot is booked or not
-
-    def clean(self):
-        # This stops the user from booking in the past 
-        if self.meal_day and self.meal_day < now().date():
-            raise ValidationError("Cannot make a booking in the past.")
-
-        # This checks for bookings at the same time 
-        existing_bookings = Booking.objects.filter(meal_time=self.meal_time, meal_day=self.meal_day, is_booked=True)
-        if self.pk:  # Exclude current booking from choices 
-            existing_bookings = existing_bookings.exclude(pk=self.pk)
-        if existing_bookings.exists():
-            raise ValidationError("A booking already exists at this time on this day.")
 
     TIME_CHOICES = [
         ('13:00', '01:00 PM'),
@@ -40,38 +27,37 @@ class Booking(models.Model):
 
     meal_time = models.CharField(max_length=5, choices=TIME_CHOICES)
 
+    def clean(self):
+        if self.meal_day and self.meal_day < now().date():
+            raise ValidationError("Cannot make a booking in the past.")
+
+        existing_bookings = Booking.objects.filter(meal_time=self.meal_time, meal_day=self.meal_day)
+        if self.pk:
+            existing_bookings = existing_bookings.exclude(pk=self.pk)
+        if existing_bookings.exists():
+            raise ValidationError("A booking already exists at this time on this day.")
+
+        super().clean()  # Call parent's clean method for remaining validations
+
     def save(self, *args, **kwargs):
-        if not self.pk:  # Check if it's a new booking
+        if not self.pk:
             available_times = [choice[0] for choice in self.TIME_CHOICES]
-            booked_times = Booking.objects.filter(meal_day=self.meal_day, is_booked=True).values_list('meal_time', flat=True)
+            booked_times = Booking.objects.filter(meal_day=self.meal_day).values_list('meal_time', flat=True)
             available_times = [time for time in available_times if time not in booked_times]
+            
+            print("\nAvailable times:", available_times)
+            print("Booked times:", booked_times)
+            print("Self pk:", self.pk)
+
             if available_times:
-                self.meal_time = available_times[0]  # Assign the first available time slot
-                self.is_booked = True  # Mark the time slot as booked
+                print("\nSelf meal time before assignment:", self.meal_time)
+                self.meal_time = self.meal_time
+                print("Self meal time after assignment:", self.meal_time)
             else:
                 raise ValidationError("No available time slots for the selected day.")
+        else:
+            print("\nSelf meal time before save:", self.meal_time)
+        
         super().save(*args, **kwargs)
 
-
-
-#def main():
-    # Fetch the booking with pk 1
-    #booking_pk_1 = Booking.objects.filter(pk=21).first()
-
-    # Print the booking information
-    #if booking_pk_1:
-       # print("Booking with pk 21:")
-       # print("Name:", booking_pk_1.name)
-       # print("Special Occasion:", booking_pk_1.special_occasion)
-       # print("Meal Day:", booking_pk_1.meal_day)
-       # print("Number of Guests:", booking_pk_1.number_of_guests)
-       # print("Customer Name:", booking_pk_1.customer_name)
-       # print("Meal Time:", booking_pk_1.meal_time)
-        # Add more fields as needed
-    #else:
-       # print("Booking with pk 21 does not exist.")
-
-
-#main()
-
-#print("Hello")
+        print("Self meal time after save:", self.meal_time)
