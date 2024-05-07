@@ -51,3 +51,27 @@ class Booking(models.Model):
             else:
                 raise ValidationError("No available time slots for the selected day.")
         super().save(*args, **kwargs)
+
+
+
+#def main():
+    # Fetch the booking with pk 1
+    #booking_pk_1 = Booking.objects.filter(pk=21).first()
+
+    # Print the booking information
+    #if booking_pk_1:
+       # print("Booking with pk 21:")
+       # print("Name:", booking_pk_1.name)
+       # print("Special Occasion:", booking_pk_1.special_occasion)
+       # print("Meal Day:", booking_pk_1.meal_day)
+       # print("Number of Guests:", booking_pk_1.number_of_guests)
+       # print("Customer Name:", booking_pk_1.customer_name)
+       # print("Meal Time:", booking_pk_1.meal_time)
+        # Add more fields as needed
+    #else:
+       # print("Booking with pk 21 does not exist.")
+
+
+#main()
+
+#print("Hello")

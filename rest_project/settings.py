@@ -89,18 +89,20 @@ WSGI_APPLICATION = 'rest_project.wsgi.application'
   #  }
 #}
 
+DATABASES = {
+    #'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
+}
+
+
+#check 
+#db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
+
+# Database configuration
 #DATABASES = {
     #'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
 #}
 
-db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
-
-# Database configuration
-DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
-}
-
-print("Database configuration:", db_from_env)
+#print("Database configuration:", db_from_env)
 
 
 # Password validation
