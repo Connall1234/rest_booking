@@ -1,15 +1,16 @@
 $(document).ready(function() {
     // Initialize date picker for meal_day field with id "id_meal_day"
     $('#id_meal_day').datepicker({
-        dateFormat: 'yy-mm-dd'
+        dateFormat: 'yy-mm-dd',
+        minDate: 0 // Prevent selection of past dates
     });
 
     // Initialize date picker for meal_day field with id "meal_day_filter"
     $('#meal_day_filter').datepicker({
-        dateFormat: 'yy-mm-dd'
+        dateFormat: 'yy-mm-dd',
+        minDate: 0 // Prevent selection of past dates
     });
 });
-
 
 
 // Check the type of the value
