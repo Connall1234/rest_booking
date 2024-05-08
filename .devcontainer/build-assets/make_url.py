@@ -1,6 +1,8 @@
-# Simple utility for creating the Cloudinary URL from a
-# cloudinary_python.txt file
-# Matt Rudge, November 2021
+"""
+Simple utility for creating the Cloudinary URL from a
+cloudinary_python.txt file
+Matt Rudge, November 2021
+"""
 
 import re
 

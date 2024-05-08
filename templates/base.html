@@ -1,185 +1,157 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bg-dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Navigation Bar</title>
-    <!-- Bootstrap CSS CDN -->
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Bootstrap CSS CDN & our stylesheet -->
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
- 
+    {% load static %}
 </head>
-<body class="bg-dark">
-  
-<!-- Navbar -->
-<header>
-    <nav class="navbar fixed-top navbar-expand-sm navbar-light bg-dark p-2">
-        <a href="{% url 'index' %}" class="navbar-brand mb-0 h1 px-5 text-white">
-            Carlo's
-        </a>
-        <button type="button" class="navbar-toggler bg-white" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse text-white justify-content-end m-0" id="navbarNav">
 
-            {% if messages %}
-            <ul class="messages message_notes text-center list-unstyled text-decoration-none bg-dark m-0 nav-item">
-                {% for message in messages %}
-                    <li{% if message.tags %} class="{{ message.tags }} nav-item"{% endif %}>{{ message }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-            <ul class="navbar-nav px-5 text-center">
-                <li class="nav-item">
-                    <a href="{% url 'index' %}" class="nav-link text-white underline-navbar">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url 'menu' %}" class="nav-link text-white underline-navbar">Menu</a>
-                </li>
-                {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a href="{% url 'logout' %}" class="nav-link text-white underline-navbar">Logout</a>
-                    </li>
-                    <!--Last changes-->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Bookings
-                        </a>
-                        <div class="dropdown-menu bg-dark text-center p-2 fade" aria-labelledby="navbarDropdown bg-dark">
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar fixed-top navbar-expand-sm navbar-light bg-dark p-2">
+            <a href="{% url 'index' %}" class="navbar-brand mb-0 h1 px-5 text-white">
+                Carlo's
+            </a>
+            <button type="button" class="navbar-toggler bg-white" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse text-white justify-content-end m-0" id="navbarNav">
 
-                            <a href="{% url 'create_booking' %}" class="nav-link text-white dropdown-navitems">Make a booking</a>
-                            <a href="{% url 'booking_list' %}" class="nav-link text-white dropdown-navitems">Manage a booking</a>
-                        </div>
-                    </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a href="{% url 'login' %}" class="nav-link text-white underline-navbar">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{% url 'register_user' %}" class="nav-link text-white underline-navbar">Register</a>
-                    </li>
+                {% if messages %}
+                <ul class="messages message_notes text-center list-unstyled text-decoration-none bg-dark m-0 nav-item">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }} nav-item"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
                 {% endif %}
-                <div class="button-nav-booking px-3">
+                <ul class="navbar-nav px-5 text-center">
+                    <li class="nav-item">
+                        <a href="{% url 'index' %}" class="nav-link text-white underline-navbar">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'menu' %}" class="nav-link text-white underline-navbar">Menu</a>
+                    </li>
                     {% if user.is_authenticated %}
-                        <a href="{% url 'create_booking' %}" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light" data-mdb-ripple-color="dark">Make a booking!</a>
+                        <li class="nav-item">
+                            <a href="{% url 'logout' %}" class="nav-link text-white underline-navbar">Logout</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Bookings
+                            </a>
+                            <div class="dropdown-menu bg-dark text-center p-2 fade" aria-labelledby="navbarDropdown bg-dark">
+
+                                <a href="{% url 'create_booking' %}" class="nav-link text-white dropdown-navitems">Make a booking</a>
+                                <a href="{% url 'booking_list' %}" class="nav-link text-white dropdown-navitems">Manage a booking</a>
+                            </div>
+                        </li>
                     {% else %}
-                        <a href="{% url 'login' %}" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light" data-mdb-ripple-color="dark">Make a booking!</a>
+                        <li class="nav-item">
+                            <a href="{% url 'login' %}" class="nav-link text-white underline-navbar">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'register_user' %}" class="nav-link text-white underline-navbar">Register</a>
+                        </li>
                     {% endif %}
+                    <div class="button-nav-booking px-3">
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'create_booking' %}" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light" data-mdb-ripple-color="dark">Make a booking!</a>
+                        {% else %}
+                            <a href="{% url 'login' %}" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light" data-mdb-ripple-color="dark">Make a booking!</a>
+                        {% endif %}
 
-                    
-                </div>
-            </ul>
-
-        </div>
-    </nav>
-</header>
-<!-- Navbar -->
-<!--
-{% if messages %}
-    <ul class="messages message_notes text-center list-unstyled text-decoration-none bg-dark">
-        {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-{% endif %}
--->
-
-
-{% if form.errors %}
-    <div class="alert alert-danger error_message_notes text-center">
-        <ul class="list-unstyled text-decoration-none">
-            {% for field, errors in form.errors.items %}
-                {% for error in errors %}
-                    <li>Error: {{ error }}</li>
-                {% endfor %}
-            {% endfor %}
-        </ul>
-    </div>
-{% endif %}
-{% block content %}
-{% endblock %}
-
-
-<footer class="footer navbar-fixed-bottom bg-dark text-white pt-3 mt-0">
-
-
-    <div class="container text-center">
-        <row class="d-none d-sm-block">
-            <h3>Carlo's Restaurant</h3>
-            <p>Nestled in the heart of the city, our restaurant boasts an intimate ambiance and unparalleled service, inviting patrons to indulge in an unforgettable dining experience.</p>
-        </row>
-    </div>
-    <div class="container">
-        <div class="row text-center small d-flex justify-content-between">
-            <h5 class="text-uppercase font-weight-bold text-warning">Contact</h5>
-            <div class="col-md-3 col-sm-12">
-                <p>
-                <i class="fas fa-home"></i>
-                123 Baker Street, London, W1U 6TY
-                </p>
-            </div>
-            <div class="col-md-3 col-sm-12">
-                <p>
-                <i class="fas fa-envelope"></i>
-                carlosteakhouse@gmail.com
-                </p>
-            </div>
-            <div class="col-md-3 col-sm-12">
-                <p>
-                <i class="fas fa-phone"></i>
-                +353 85 8345774
-                </p>            
-            </div>
-        </div>
-    </div>
-    
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-sm-12">
-                <p class="text-center text-md-left">Copyright &copy; {% now "Y" %}</p>
-            </div>
-            <div class="col-md-6">
-                <ul class="list-unstyled row justify-content-between text-center text-md-left">
-                    <div class="col-4 ">
-                        <li class="">
-                            <a href="https://facebook.com" target="_blank" class="btn-floating btn-sm text-white">
-                                <i class="fab fa-facebook"></i>
-                            </a>
-                        </li>
-                    </div>
-                    <div class="col-4 ">
-                        <li class="">
-                            <a href="https://twitter.com/" target="_blank" class="btn-floating btn-sm text-white">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                        </li>
-                    </div>
-                    <div class="col-4 ">
-                        <li class="">
-                            <a href="https://youtube.com" target="_blank" class="btn-floating btn-sm text-white">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                        </li>
+                        
                     </div>
                 </ul>
+
+            </div>
+        </nav>
+    </header>
+
+    {% if form.errors %}
+        <div class="alert alert-danger error_message_notes text-center">
+            <ul class="list-unstyled text-decoration-none">
+                {% for field, errors in form.errors.items %}
+                    {% for error in errors %}
+                        <li>Error: {{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    {% block content %}
+    {% endblock %}
+
+    <footer class="footer navbar-fixed-bottom bg-dark text-white pt-3 mt-0">
+        <div class="container text-center">
+            <div class="d-none d-sm-block">
+                <h3>Carlo's Restaurant</h3>
+                <p>Nestled in the heart of the city, our restaurant boasts an intimate ambiance and unparalleled service, inviting patrons to indulge in an unforgettable dining experience.</p>
             </div>
         </div>
-    </div>
-
-
-</footer>
-
-<!-- Bootstrap JS CDN -->
-<!-- Below may need to be brought back if there are further issues -->
-<!--
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+I6J46fXn2XT7u8MkK/IsLq2R/HJgY+2KR7pJ2f" crossorigin="anonymous"></script>
--->
-<!-- Above may need to be brought back if there are further issues -->
+        <div class="container">
+            <div class="row text-center small d-flex justify-content-between">
+                <h5 class="text-uppercase font-weight-bold text-warning">Contact</h5>
+                <div class="col-md-3 col-sm-12">
+                    <p>
+                    <i class="fas fa-home"></i>
+                    123 Baker Street, London, W1U 6TY
+                    </p>
+                </div>
+                <div class="col-md-3 col-sm-12">
+                    <p>
+                    <i class="fas fa-envelope"></i>
+                    carlosteakhouse@gmail.com
+                    </p>
+                </div>
+                <div class="col-md-3 col-sm-12">
+                    <p>
+                    <i class="fas fa-phone"></i>
+                    +353 85 8345774
+                    </p>            
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <p class="text-center text-md-left">Copyright &copy; {% now "Y" %}</p>
+                </div>
+                <div class="col-md-6">
+                    <ul class="list-unstyled row justify-content-between text-center text-md-left">
+                        <div class="col-4 ">
+                            <li class="">
+                                <a href="https://facebook.com" target="_blank" class="btn-floating btn-sm text-white">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                            </li>
+                        </div>
+                        <div class="col-4 ">
+                            <li class="">
+                                <a href="https://twitter.com/" target="_blank" class="btn-floating btn-sm text-white">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </li>
+                        </div>
+                        <div class="col-4 ">
+                            <li class="">
+                                <a href="https://youtube.com" target="_blank" class="btn-floating btn-sm text-white">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            </li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
-
-
-
