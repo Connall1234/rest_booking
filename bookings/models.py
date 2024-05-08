@@ -10,8 +10,8 @@ class Booking(models.Model):
     meal_day = models.DateField()
     number_of_guests = models.PositiveIntegerField(
         null=True,
-        validators=[MinValueValidator(1), MaxValueValidator(6)]
-    )
+        validators=[MinValueValidator(1, message='Number of guests must be at least 1.'), MaxValueValidator(6, message='Number of guests cannot exceed 6.')])
+    
     customer_name = models.CharField(max_length=50)
 
     TIME_CHOICES = [

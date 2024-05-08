@@ -17,11 +17,11 @@
                 <h1>Filter</h1>
             <div class="form-group m-5 row justify-content-center">
                 <label for="meal_day_filter">Meal Day:</label>
-                <input id="meal_day_filter" name="meal_day" class="form-control col-6 text-center" required>
+                <input id="meal_day_filter" name="meal_day" class="form-control col-6 text-center" required readonly>
                 <div class="invalid-feedback m-5">Please select a meal day.</div>
             </div>
 
-            <button type="submit" class="btn btn-primary text-center">Search</button>
+            <button id="search_button" type="submit" class="btn btn-primary text-center" >Search</button>
             <a href="{% url 'booking_list' %}" class="btn btn-danger">Reset</a>
 
         </form>
@@ -43,12 +43,25 @@
                     <strong>Meal Time:</strong> {{ booking.meal_time }}<br>
                     <!-- Add other fields as needed -->
                 </p>
-                <a href="{% url 'edit_booking' booking.id %}" class="btn btn-primary">Edit</a>
-                <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger">Delete</a>
+                {% if not booking.is_past_meal_day %}
+                    <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger">Delete</a>
+
+                    <a href="{% url 'edit_booking' booking.id %}" class="btn btn-primary">Edit</a>
+                    <!-- Only show the "Delete" button if meal_day is not past today -->
+                {% else %}
+
+                    <p> This booking has expired.</p>
+                    <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger">Delete</a>
+
+                {% endif %}
             </div>
+ 
         </div>
-{% empty %}
-{% endfor %}
+    {% empty %}
+    {% endfor %}
+</div>
+
+
 {% endif %}
 
 
@@ -69,8 +82,17 @@
                         <strong>Meal Time:</strong> {{ booking.meal_time }}<br>
                         <!-- Add other fields as needed -->
                     </p>
-                    <a href="{% url 'edit_booking' booking.id %}" class="btn btn-primary">Edit</a>
-                    <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger">Delete</a>
+                    {% if not booking.is_past_meal_day %}
+                        <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger">Delete</a>
+
+                        <a href="{% url 'edit_booking' booking.id %}" class="btn btn-primary">Edit</a>
+                    <!-- Only show the "Delete" button if meal_day is not past today -->
+                    {% else %}
+
+                        <p> This booking has expired.</p>
+                        <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger">Delete</a>
+
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}
@@ -79,7 +101,7 @@
     <div class="container list_booking text-center">
         <h5>No bookings found, click below to book with us!</h5>
         {% if user.is_authenticated %}
-        <a href="{% url 'create_booking' %}" type="button" class="btn btn-warning btn-rounded " data-mdb-ripple-init>Make a booking!</a>
+        <a href="{% url 'create_booking' %}" type="button" class="btn btn-warning btn-rounded " data-mdb-ripple-init id="edit_booking_button">Make a booking!</a>
         {% else %}
         <a href="{% url 'login' %}" type="button" class="btn btn-warning btn-rounded " data-mdb-ripple-init>Make a booking!</a>
         {% endif %}

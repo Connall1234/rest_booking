@@ -5,6 +5,8 @@ from django.contrib import messages
 from .models import Booking
 from .forms import BookingForm
 from django.db import connection
+from datetime import date
+
 
 
 #This is our view to create a booking, added login required decorater
@@ -72,11 +74,20 @@ def booking_list(request):
         p = Paginator(Booking.objects.all(), 10)
         page = request.GET.get('page')
         booking_list_result = p.get_page(page)
+
+        today = date.today()
+        for booking in booking_list_result:
+            booking.is_past_meal_day = booking.meal_day < today
+            print(booking.is_past_meal_day, booking.meal_day, today, "\nHelloooooo")
     else:
         bookings = Booking.objects.filter(name=request.user)
         p = Paginator(Booking.objects.filter(name=request.user), 2)
         page = request.GET.get('page')
         booking_list_result = p.get_page(page)
+        today = date.today()
+        for booking in booking_list_result:
+            booking.is_past_meal_day = booking.meal_day < today
+            print(booking.is_past_meal_day, booking.meal_day, today, "\nHelloooooo")
 
     return render(request, 'booking_list.html', {'bookings': bookings, 'booking_list_result': booking_list_result})
 
@@ -92,7 +103,10 @@ def filterView(request):
     if meal_day_query is not None:
         qs = qs.filter(meal_day=meal_day_query)
 
-  
+    today = date.today()
+    for booking in qs:
+        booking.is_past_meal_day = booking.meal_day < today
+        print(booking.is_past_meal_day, booking.meal_day, today, "\nHelloooooo")
 
 
 

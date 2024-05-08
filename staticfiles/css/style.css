@@ -212,7 +212,12 @@
     margin: 220px auto;
 }
 
+/* Our 404 page */
 
+.ourerror_page {
+    height: 70vh;
+    padding: 246px;
+}
 
 
 /* Our media queries */
@@ -230,13 +235,6 @@
         display: block;
         transition: opacity 0.2s;
     }
-
-    
-
-
-
-
-    
     
     .underline-navbar:hover::after {
         opacity: 1;
@@ -297,7 +295,21 @@
     .carousel-button a {
         font-size: 12px;
     }
+
+    /* This is for our menu, on mid size screens */
+    .section-padding-menu {
+        padding: 0;
+        padding-top: 100px;
+    }
+
+    .menu .menu-desc {
+        margin-left: 20px;
+        font-size: 12px;
+    }
     
+    .menu .menu-dishes {
+        margin-left: 20px;
+    }
 
 }
 

@@ -18,7 +18,7 @@
                             </div>
                             <div class="col-md-12 text-center">
                                 <label for="id_meal_time">Meal Time:</label>
-                                <select id="id_meal_time" name="meal_time" >
+                                <select id="id_meal_time" name="meal_time" required>
                                     {% for value, label in form.fields.meal_time.choices %}
                                             <option value="{{ value }}">{{ label }}</option>
                                     {% endfor %}
@@ -26,7 +26,7 @@
                             </div>
                             <div class="col-md-12 text-center">
                                 <label for="id_special_occasion">Special Occasion:</label>
-                                <select id="id_special_occasion" name="special_occasion">
+                                <select id="id_special_occasion" name="special_occasion" required>
                                     {% for value_occ, label_occ in form.fields.special_occasion.choices %}
                                             <option value="{{ value_occ }}">{{ label_occ }}</option>
                                     {% endfor %}
