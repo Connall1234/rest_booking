@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<!--This is our register page-->
 <section class="form_create_booking_section">
     <div class="container bg-dark form_container">
         <form method="post" action="{% url 'register_user' %}">
@@ -36,6 +38,7 @@
                         </div>
                         <div class="col-md-12 text-center">
                             <ul class="list-unstyled text-decoration-none">
+                                <!--For our users to have more security on their acounts-->
                                 <li>Your password cannot be too similar to your other personal information.</li>
                                 <li> Your password must contain at least 8 characters.</li>
                                 <li>Your password cannot be a commonly used password.</li>
@@ -50,4 +53,3 @@
     </div>
 </section>
 {% endblock %}
-

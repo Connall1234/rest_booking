@@ -2,30 +2,28 @@
 
 {% block content %}
 
-<section class="bg-dark">
+<div class="bg-dark">
     {% if user.is_authenticated and user.is_superuser %}
-
+    <!--Below is for our filter search-->
     <div class="section-padding search_form container">
         <div class="container bg-dark text-dark text-center">
             <form method="GET" class="needs-validation" novalidate action="{% url 'filter_view' %}" autocomplete="off">
                 {% csrf_token %}
                 <div class="form-group">
-                    <h1>Filter</h1>
+                    <h2>Filter</h2>
                 <div class="form-group m-5 row justify-content-center">
                     <label for="meal_day_filter">Meal Day:</label>
                     <input id="meal_day_filter" name="meal_day" class="form-control col-6 text-center" required readonly>
                     <div class="invalid-feedback m-5">Please select a meal day.</div>
-                </div>
-
+                </div>    
                 <button id="search_button" type="submit" class="btn btn-primary text-center" >Search</button>
                 <a href="{% url 'booking_list' %}" class="btn btn-danger">Reset</a>
                 </div>
             </form>
         </div>
     </div>
-
     <hr>
-
+    <!--Below is for our booking return from filter search-->
     <div class="container list_booking">
         {% for booking in queryset %}
             <div class="card mb-1 bg-dark text-center border border-white rounded form_container">
@@ -37,33 +35,23 @@
                         <strong>Special Occasion:</strong> {{ booking.special_occasion|capfirst }}<br>
                         <strong>Meal Day:</strong> {{ booking.meal_day }}<br>
                         <strong>Meal Time:</strong> {{ booking.meal_time }}<br>
-                        <!-- Add other fields as needed -->
                     </p>
                     {% if not booking.is_past_meal_day %}
                         <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger">Delete</a>
-
                         <a href="{% url 'edit_booking' booking.id %}" class="btn btn-primary">Edit</a>
                         <!-- Only show the "Delete" button if meal_day is not past today -->
                     {% else %}
-
                         <p> This booking has expired.</p>
                         <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger">Delete</a>
 
                     {% endif %}
                 </div>
-    
             </div>
         {% empty %}
         {% endfor %}
     </div>
-
-
     {% endif %}
-
-
-
-
-
+    <!--Below is for our booking list results-->
     {% if bookings %}
         <div class="container list_booking">
             {% for booking in booking_list_result %}
@@ -76,15 +64,12 @@
                             <strong>Special Occasion:</strong> {{ booking.special_occasion|capfirst }}<br>
                             <strong>Meal Day:</strong> {{ booking.meal_day }}<br>
                             <strong>Meal Time:</strong> {{ booking.meal_time }}<br>
-                            <!-- Add other fields as needed -->
                         </p>
                         {% if not booking.is_past_meal_day %}
                             <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger">Delete</a>
-
                             <a href="{% url 'edit_booking' booking.id %}" class="btn btn-primary">Edit</a>
                         <!-- Only show the "Delete" button if meal_day is not past today -->
                         {% else %}
-
                             <p> This booking has expired.</p>
                             <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger">Delete</a>
 
@@ -94,6 +79,7 @@
             {% endfor %}
         </div>
     {% else %}
+        <!-- If no bookings found this will be returned -->
         <div class="container list_booking text-center">
             <h5>No more bookings found, click below to book with us!</h5>
             {% if user.is_authenticated %}
@@ -104,7 +90,7 @@
         </div>
     {% endif %}
     <div class="text-white">
-
+        <!--Below is for our pagnation-->
         <nav aria-label="Page navigation">
             <ul class="pagination justify-content-center">
                 {% if booking_list_result.has_previous %}
@@ -124,7 +110,6 @@
                         Page {{ booking_list_result.number }} of {{ booking_list_result.paginator.num_pages }}
                     </a>
                 </li>
-
                 {% if booking_list_result.has_next %}
                     <li class="page-item">
                         <a class="page-link" href="?page={{ booking_list_result.next_page_number }}" aria-label="Next">
@@ -140,6 +125,5 @@
             </ul>
         </nav>
     </div>
-
+</div>
     {% endblock %}
-</section>

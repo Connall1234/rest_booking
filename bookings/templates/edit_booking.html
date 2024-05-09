@@ -1,24 +1,16 @@
-User
-here is my html 
 
 {% extends "base.html" %}
 
 {% block content %}
-
-
-
-<!---->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<section class="bg-dark"> 
+        <!--This is our edit booking page, below is the booking we're using-->
+<div class="bg-dark"> 
     <section class="form_create_booking_section">
         <div class="container bg-dark form_container">
             <form method="post" action="{% url 'edit_booking' booking.id %}" autocomplete="off">
                         {% csrf_token %}
                         <div class="row justify-content-center text-center form_row content-center">
                             <div class="col-md-12 text-center">
-                                <h2>Create Booking</h2>
+                                <h2>Edit Booking</h2>
                             </div>
                             <div class="col-md-12 text-center">
                                 <label for="id_meal_time">Meal Time:</label>
@@ -47,14 +39,7 @@ here is my html
             </form>
         </div>
     </section>
-    <script src="/static/js/script.js"></script>
-</section> 
-
-<!---->
+</div> 
 
 {% endblock %}
 
-
-<!-- Include jQuery UI CSS -->
-
-<!-- Initialize the date picker -->

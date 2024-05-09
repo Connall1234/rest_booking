@@ -3,8 +3,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-
+        <!--This is our create booking page-->
 <section class="bg-dark"> 
     <section class="form_create_booking_section bg-dark">
         <div class="container bg-dark form_container">
@@ -17,6 +16,7 @@
                             <div class="col-md-12 text-center">
                                 <label for="id_meal_time">Meal Time:</label>
                                 <select id="id_meal_time" name="meal_time" required>
+                                    <!--This code is to check for the meal time we have available-->
                                     {% for value, label in form.fields.meal_time.choices %}
                                             <option value="{{ value }}">{{ label }}</option>
                                     {% endfor %}
@@ -25,6 +25,7 @@
                             <div class="col-md-12 text-center">
                                 <label for="id_special_occasion">Special Occasion:</label>
                                 <select id="id_special_occasion" name="special_occasion" required>
+                                    <!--This code is to check for the occasions we have available-->
                                     {% for value_occ, label_occ in form.fields.special_occasion.choices %}
                                             <option value="{{ value_occ }}">{{ label_occ }}</option>
                                     {% endfor %}
