@@ -4,11 +4,9 @@
 
 {% block content %}
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<body class="bg-dark"> 
-    <section class="form_create_booking_section">
+
+<section class="bg-dark"> 
+    <section class="form_create_booking_section bg-dark">
         <div class="container bg-dark form_container">
             <form method="post" action="{% url 'create_booking' %}" autocomplete="off" id="create_booking_form_id">
                         {% csrf_token %}
@@ -51,14 +49,5 @@
             </form>
         </div>
     </section>
-    <script src="/static/js/script.js"></script>
-</body> 
-
-
-
+</section> 
 {% endblock %}
-
-
-<!-- Include jQuery UI CSS -->
-
-<!-- Initialize the date picker -->

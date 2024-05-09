@@ -2,26 +2,8 @@
 
 {% block content %}
 
-<!--
-<form method="post" action="{% url 'login' %}">
-    {% csrf_token %}
-    <h2>Login</h2>
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Username</label>
-      <input type="text" class="form-control" name="username" aria-describedby="emailHelp">
-    </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Password</label>
-      <input type="password" class="form-control" name="password">
-    </div>
-
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
--->
-
-
-<body class="bg-dark">
-<section class="section-padding">
+<section class="bg-dark">
+  <section class="section-padding">
     <div class="container form_container">
         <form method="post" action="{% url 'login' %}">
                     {% csrf_token %}
@@ -47,6 +29,6 @@
         </form>
     </div>
   </section>
-</body>
+</section>
 {% endblock %}
 

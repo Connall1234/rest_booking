@@ -1,219 +1,217 @@
 {% extends "base.html" %} {% block content %}
 <!--Our main image-->
-<body>
-  <section class="carousel_lrg_image_section">
-    <div id="carouselExampleCaptions" class="carousel slide">
-      <div class="carousel-indicators">
-        <button
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide-to="0"
-          class="active"
-          aria-current="true"
-          aria-label="Slide 1"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide-to="1"
-          aria-label="Slide 2"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide-to="2"
-          aria-label="Slide 3"
-        ></button>
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="static\images\imagetwo.jpeg" class="d-block w-100" alt="..." />
-          <div class="carousel-caption text-center">
-            <h5>Fine Dining </h5>
-            <p>An unforgettable fine dining journey.</p>
-            <div class="carousel-button">
-              {% if user.is_authenticated %}
-              <a href="{% url 'create_booking' %}" type="button" class="btn btn-warning btn-rounded " data-mdb-ripple-init>Make a booking!</a>
-              {% else %}
-              <a href="{% url 'login' %}" type="button" class="btn btn-warning btn-rounded " data-mdb-ripple-init>Make a booking!</a>
-              {% endif %}
-            </div>
-          </div>
+<div class="bg-dark">
+    <section class="carousel_lrg_image_section">
+      <div id="carouselExampleCaptions" class="carousel slide">
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
         </div>
-        <div class="carousel-item">
-          <img
-            src="static\images\images_three.jpg"
-            class="d-block w-100"
-            alt="..."
-          />
-          <div class="carousel-caption">
-            <h5>Fresh Ingredients.</h5>
-            <p>
-              We source ingredients locally.
-            </p>
-            <div class="carousel-button">
-              {% if user.is_authenticated %}
-              <a href="{% url 'create_booking' %}" type="button" class="btn btn-warning btn-rounded " data-mdb-ripple-init>Make a booking!</a>
-              {% else %}
-              <a href="{% url 'login' %}" type="button" class="btn btn-warning btn-rounded " data-mdb-ripple-init>Make a booking!</a>
-              {% endif %}
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img
-            src="static\images\images_five.jpg"
-            class="d-block w-100"
-            alt="..."
-          />
-          <div class="carousel-caption">
-            <h5>Memorable Dining</h5>
-            <p>
-              Our friendly staff will cater to your needs.
-            </p>
-            <div class="carousel-button">
-              {% if user.is_authenticated %}
-              <a href="{% url 'create_booking' %}" type="button" class="btn btn-warning btn-rounded " data-mdb-ripple-init>Make a booking!</a>
-              {% else %}
-              <a href="{% url 'login' %}" type="button" class="btn btn-warning btn-rounded " data-mdb-ripple-init>Make a booking!</a>
-              {% endif %}
-            </div>
-          </div>
-        </div>
-      </div>
-      <button
-        class="carousel-control-prev"
-        type="button"
-        data-bs-target="#carouselExampleCaptions"
-        data-bs-slide="prev"
-      >
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button
-        class="carousel-control-next"
-        type="button"
-        data-bs-target="#carouselExampleCaptions"
-        data-bs-slide="next"
-      >
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-  </section>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="static\images\imagetwo.jpeg" class="d-block w-100" alt="Picture of waiter holding different dishes">
+            <div class="carousel-caption text-center">
+              <h5>Fine Dining </h5>
+              <p>An unforgettable fine dining journey.</p>
+              <div class="carousel-button">
+                {% if user.is_authenticated %}
+                <a href="{% url 'create_booking' %}" class="btn btn-warning btn-rounded" data-mdb-ripple-init>Make a Reservation</a>
 
-  <!--Our abut me section-->
-  <section class="about section-padding bg-dark about_lrg_screen" id="about">
-    <div class="container">
+                {% else %}
+                <a href="{% url 'login' %}" class="btn btn-warning btn-rounded " data-mdb-ripple-init>Make a booking!</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img
+              src="static\images\images_three.jpg"
+              class="d-block w-100"
+              alt="Picture of waiter serving food"
+            >
+            <div class="carousel-caption">
+              <h5>Fresh Ingredients.</h5>
+              <p>
+                We source ingredients locally.
+              </p>
+              <div class="carousel-button">
+                {% if user.is_authenticated %}
+                <a href="{% url 'create_booking' %}" type="button" class="btn btn-warning btn-rounded " data-mdb-ripple-init>Make a booking!</a>
+                {% else %}
+                <a href="{% url 'login' %}" type="button" class="btn btn-warning btn-rounded " data-mdb-ripple-init>Make a booking!</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img
+              src="static\images\images_five.jpg"
+              class="d-block w-100"
+              alt="Picture of pasta dish."
+            >
+            <div class="carousel-caption">
+
+              <h5>Memorable Dining</h5>
+              <p>
+                Our friendly staff will cater to your needs.
+              </p>
+              <div class="carousel-button">
+                {% if user.is_authenticated %}
+                <a href="{% url 'create_booking' %}" type="button" class="btn btn-warning btn-rounded " data-mdb-ripple-init>Make a booking!</a>
+                {% else %}
+                <a href="{% url 'login' %}" type="button" class="btn btn-warning btn-rounded " data-mdb-ripple-init>Make a booking!</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </section>
+
+    <!--Our abut me section-->
+    <section class="about section-padding bg-dark about_lrg_screen" id="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-12 col-12 ps-lg-5 mt-md-5">
+            <div class="about-img">
+              <img alt="Image of pasta dish" class="img-fluid rounded" src="static\images\images_five.jpg">
+            </div>
+          </div>
+          <div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-5">
+            <div class="about-text text-center text-sm-left text-md-start">
+              <h2>About Us</h2>
+              <p>
+                At Carlos, we're dedicated to crafting unforgettable dining
+                experiences. Our menu, thoughtfully curated by our team of skilled
+                chefs, celebrates the finest locally-sourced ingredients. Each dish
+                is a work of art, reflecting our commitment to quality and
+                innovation. With a warm and inviting ambiance, attentive staff, and
+                a passion for gastronomy, Carlos Fine Dining Restaurant invites you
+                to indulge in a truly memorable culinary journey. Whether it's a
+                romantic dinner for two or a celebration with friends and family, we
+                look forward to exceeding your expectations and creating moments to
+                savor.
+              </p>
+              <div class="text-center text-sm-left text-md-start">
+                <a class="check-menu-button btn btn-warning" href="{% url 'menu' %}">Check out our menu!</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding bg-dark">
+      <div class="container">
+          <div class="row d-flex justify-content-center">
+              <div class="col-md-10 col-xl-8 text-center">
+              <h3 class="mb-4">What our customers say!</h3>
+              <p class="mb-4 pb-2 mb-md-5 pb-md-0 py-0 text-muted">
+                  We've posted the latest reviews from our TripAdvisor!
+              </p>
+              </div>
+          </div>
+
+          <div class="row text-center">
+              <div class="col-md-4 mb-0 mb-md-0">
+              <div class="d-flex justify-content-center mb-4">
+                  <img src="static\images\customer_one.jpg"
+                  class="rounded-circle shadow-1-strong" width="150" height="150" alt="Picture of customer, who left review">
+              </div>
+              <h5 class="mb-3">James Browne</h5>
+              <p class="px-xl-3">
+                  <i class="fas fa-quote-left pe-2"></i>Food was amazing!
+              </p>
+              </div>
+              <div class="col-md-4 mb-0 mb-md-0">
+                <div class="d-flex justify-content-center mb-4">
+                    <img src="static\images\customer_two.jpg"
+                    class="rounded-circle shadow-1-strong" width="150" height="150" alt="Picture of customer, who left review">
+                </div>
+                <h5 class="mb-3">Maria Hughes</h5>
+                <p class="px-xl-3"><i class="fas fa-quote-left pe-2"></i>Will eat there again!</p>
+
+              </div>
+              <div class="col-md-4 mb-0 mb-md-0">
+              <div class="d-flex justify-content-center mb-4">
+                  <img src="static\images\customer_three.jpg"
+                  class="rounded-circle shadow-1-strong" width="150" height="150" alt="Picture of customer, who left review">
+              </div>
+              <h5 class="mb-3">Lexi Roe</h5>
+              <p class="px-xl-3">
+                  <i class="fas fa-quote-left pe-2"></i>Can't wait to come back!
+              </p>
+
+              </div>
+          </div>
+      </div>
+    </section>
+
+  <!-- Gallery -->
+  <div class="section-padding bg-dark">
+    <div class="container gallery-main">
       <div class="row">
-        <div class="col-lg-4 col-md-12 col-12 ps-lg-5 mt-md-5">
-          <div class="about-img">
-            <img alt="" class="img-fluid rounded" src="static\images\images_five.jpg">
-          </div>
-        </div>
-        <div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-5">
-          <div class="about-text text-center text-sm-left text-md-start">
-            <h2>About Us</h2>
-            <p>
-              At Carlos, we're dedicated to crafting unforgettable dining
-              experiences. Our menu, thoughtfully curated by our team of skilled
-              chefs, celebrates the finest locally-sourced ingredients. Each dish
-              is a work of art, reflecting our commitment to quality and
-              innovation. With a warm and inviting ambiance, attentive staff, and
-              a passion for gastronomy, Carlos Fine Dining Restaurant invites you
-              to indulge in a truly memorable culinary journey. Whether it's a
-              romantic dinner for two or a celebration with friends and family, we
-              look forward to exceeding your expectations and creating moments to
-              savor.
-            </p>
-            <div class="text-center text-sm-left text-md-start">
-              <a class="check-menu-button btn btn-warning" href="{% url 'menu' %}">Check out our menu!</a>
-            </div>
-          </div>
-        </div>
+        <a href="static/images/gallery_one.webp" data-toggle="lightbox" data-gallery="gallery" class="col-md-4">
+          <img src="static/images/gallery_one.webp" class="img-fluid rounded" alt="Image of people having drinks">
+        </a>
+        <a href="static/images/gallery_seven.jpg" data-toggle="lightbox" data-gallery="gallery" class="col-md-4">
+          <img src="static/images/gallery_seven.jpg" class="img-fluid rounded" alt="Image of people having drinks aound table">
+        </a>
+        <a href="static/images/images_one.jpg" data-toggle="lightbox" data-gallery="gallery" class="col-md-4">
+          <img src="static/images/images_one.jpg" class="img-fluid rounded" alt="Image of salad bowl">
+        </a>
       </div>
-    </div>
-  </section>
-
-  <section class="section-padding bg-dark">
-    <div class="container">
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-10 col-xl-8 text-center">
-            <h3 class="mb-4">What our customers say!</h3>
-            <p class="mb-4 pb-2 mb-md-5 pb-md-0 py-0 text-muted">
-                We've posted the latest reviews from our TripAdvisor!
-            </p>
-            </div>
-        </div>
-
-        <div class="row text-center">
-            <div class="col-md-4 mb-0 mb-md-0">
-            <div class="d-flex justify-content-center mb-4">
-                <img src="static\images\customer_one.jpg"
-                class="rounded-circle shadow-1-strong" width="150" height="150" />
-            </div>
-            <h5 class="mb-3">James Browne</h5>
-            <p class="px-xl-3">
-                <i class="fas fa-quote-left pe-2"></i>Food was amazing!
-            </p>
-            </div>
-            <div class="col-md-4 mb-0 mb-md-0">
-            <div class="d-flex justify-content-center mb-4">
-                <img src="static\images\customer_two.jpg"
-                class="rounded-circle shadow-1-strong" width="150" height="150" />
-            </div>
-            <h5 class="mb-3">Maria Hughes</h5>
-            <p class="px-xl-3">
-                <i class="fas fa-quote-left pe-2"></i>Will eat there again!
-            </p>
-
-            </div>
-            <div class="col-md-4 mb-0 mb-md-0">
-            <div class="d-flex justify-content-center mb-4">
-                <img src="static\images\customer_three.jpg"
-                class="rounded-circle shadow-1-strong" width="150" height="150" />
-            </div>
-            <h5 class="mb-3">Lexi Roe</h5>
-            <p class="px-xl-3">
-                <i class="fas fa-quote-left pe-2"></i>Can't wait to come back!
-            </p>
-
-            </div>
-        </div>
-    </div>
-  </section>
-
-<!-- Gallery -->
-<section class="section-padding bg-dark">
-  <div class="container gallery-main">
-    <div class="row">
-      <a href="static/images/gallery_one.webp" data-toggle="lightbox" data-gallery="gallery" class="col-md-4" height="200" width="200">
-        <img src="static/images/gallery_one.webp" class="img-fluid rounded">
-      </a>
-      <a href="static/images/gallery_seven.jpg" data-toggle="lightbox" data-gallery="gallery" class="col-md-4" height="200" width="200">
-        <img src="static/images/gallery_seven.jpg" class="img-fluid rounded">
-      </a>
-      <a href="static/images/images_one.jpg" data-toggle="lightbox" data-gallery="gallery" class="col-md-4" height="200" width="200">
-        <img src="static/images/images_one.jpg" class="img-fluid rounded">
-      </a>
-    </div>
-    <div class="row">
-      <a href="static/images/images_two.jpg" data-toggle="lightbox" data-gallery="gallery" class="col-md-4">
-        <img src="static/images/images_two.jpg" class="img-fluid rounded">
-      </a>
-      <a href="static/images/gallery_five.jpg" data-toggle="lightbox" data-gallery="gallery" class="col-md-4">
-        <img src="static/images/gallery_five.jpg" class="img-fluid rounded">
-      </a>
-      <a href="static/images/gallery_six.jpg" data-toggle="lightbox" data-gallery="gallery" class="col-md-4">
-        <img src="static/images/gallery_six.jpg" class="img-fluid rounded">
-      </a>
+      <div class="row">
+        <a href="static/images/images_two.jpg" data-toggle="lightbox" data-gallery="gallery" class="col-md-4">
+          <img src="static/images/images_two.jpg" class="img-fluid rounded" alt="Image of pancakes">
+        </a>
+        <a href="static/images/gallery_five.jpg" data-toggle="lightbox" data-gallery="gallery" class="col-md-4">
+          <img src="static/images/gallery_five.jpg" class="img-fluid rounded" alt="Image various dishes">
+        </a>
+        <a href="static/images/gallery_six.jpg" data-toggle="lightbox" data-gallery="gallery" class="col-md-4">
+          <img src="static/images/gallery_six.jpg" class="img-fluid rounded" alt="Image of peop;e having a meal">
+        </a>
+      </div>
     </div>
   </div>
-</section>
-<!-- Gallery -->
+  <!-- Gallery -->
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.js"></script>
-</body>
+</div>
 
 {% endblock %}

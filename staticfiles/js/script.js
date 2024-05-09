@@ -35,7 +35,23 @@ var dropdown2 = document.getElementById("id_special_occasion");
 dropdown2.options[0].style.display = "none";
 
 
+    // Add an event listener to the navbar toggler button
+    document.querySelector('.navbar-toggler').addEventListener('click', function () {
+        // Toggle the 'show' class on the collapsible navbar content
+        document.querySelector('#navbarNav').classList.toggle('show');
+    });
 
+    // Close the navbar when a nav-link is clicked (optional)
+    document.querySelectorAll('.nav-link').forEach(function (element) {
+        element.addEventListener('click', function () {
+            // Check if the collapsible navbar content is currently shown
+            if (document.querySelector('#navbarNav').classList.contains('show')) {
+                // Hide the collapsible navbar content
+                document.querySelector('#navbarNav').classList.remove('show');
+            }
+        });
+    });
 
+    console.log("Hello")
 
 

@@ -2,11 +2,7 @@
 
 {% block content %}
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
-<body class="bg-dark">
+<section class="bg-dark">
     {% if user.is_authenticated and user.is_superuser %}
 
     <div class="section-padding search_form container">
@@ -23,7 +19,7 @@
 
                 <button id="search_button" type="submit" class="btn btn-primary text-center" >Search</button>
                 <a href="{% url 'booking_list' %}" class="btn btn-danger">Reset</a>
-
+                </div>
             </form>
         </div>
     </div>
@@ -99,7 +95,7 @@
         </div>
     {% else %}
         <div class="container list_booking text-center">
-            <h5>No bookings found, click below to book with us!</h5>
+            <h5>No more bookings found, click below to book with us!</h5>
             {% if user.is_authenticated %}
             <a href="{% url 'create_booking' %}" type="button" class="btn btn-warning btn-rounded " data-mdb-ripple-init id="edit_booking_button">Make a booking!</a>
             {% else %}
@@ -144,7 +140,6 @@
             </ul>
         </nav>
     </div>
-    <script src="/static/js/script.js"></script>
 
     {% endblock %}
-</body>
+</section>
