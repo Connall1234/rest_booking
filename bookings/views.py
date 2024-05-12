@@ -20,7 +20,16 @@ def create_booking(request):
             booking = form.save(commit=False)
             booking.name = request.user
             print("\n New line here", booking.customer_name)
+            print("\n New line here", booking.number_of_guests)
+            print("\n New line here", booking.meal_day)
+            print("\n New line here", booking.meal_time)           
+
             booking.save()
+
+            print("\n After save", booking.customer_name)
+            print("\n After save", booking.number_of_guests)
+            print("\n After save", booking.meal_day)
+            print("\n After save", booking.meal_time)           
 
             messages.success(request, 'Booking created successfully!')
             return redirect('booking_list')  # Change to to booking list page
