@@ -26,13 +26,13 @@ $(document).ready(function() {
         
 
 // This will hide the first choice for the meal time dropdown element"
-var dropdown1 = document.getElementById("id_meal_time");
-dropdown1.options[0].style.display = "none"; 
+//var dropdown1 = document.getElementById("id_meal_time");
+//dropdown1.options[0].style.display = "none"; 
 
 
 // This will hide the first choice for the special occasion dropdown element"
-var dropdown2 = document.getElementById("id_special_occasion");
-dropdown2.options[0].style.display = "none";
+//var dropdown2 = document.getElementById("id_special_occasion");
+//dropdown2.options[0].style.display = "none";
 
 
     // Add an event listener to the navbar toggler button
@@ -52,6 +52,12 @@ dropdown2.options[0].style.display = "none";
         });
     });
 
-    console.log("Hello")
+function confirmDelete() {
+    return confirm("Are you sure you want to delete this booking?");
+}
 
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Your JavaScript code goes here
+});
 

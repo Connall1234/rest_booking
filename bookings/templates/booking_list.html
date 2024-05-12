@@ -37,13 +37,12 @@
                         <strong>Meal Time:</strong> {{ booking.meal_time }}<br>
                     </p>
                     {% if not booking.is_past_meal_day %}
-                        <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger">Delete</a>
+                        <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger" onclick="return confirmDelete();">Delete</a>
                         <a href="{% url 'edit_booking' booking.id %}" class="btn btn-primary">Edit</a>
                         <!-- Only show the "Delete" button if meal_day is not past today -->
                     {% else %}
                         <p> This booking has expired.</p>
-                        <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger">Delete</a>
-
+                        <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger" onclick="return confirmDelete();">Delete</a>
                     {% endif %}
                 </div>
             </div>
@@ -66,13 +65,12 @@
                             <strong>Meal Time:</strong> {{ booking.meal_time }}<br>
                         </p>
                         {% if not booking.is_past_meal_day %}
-                            <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger">Delete</a>
+                            <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger" onclick="return confirmDelete();">Delete</a>
                             <a href="{% url 'edit_booking' booking.id %}" class="btn btn-primary">Edit</a>
                         <!-- Only show the "Delete" button if meal_day is not past today -->
                         {% else %}
                             <p> This booking has expired.</p>
-                            <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger">Delete</a>
-
+                            <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger" onclick="return confirmDelete();">Delete</a>
                         {% endif %}
                     </div>
                 </div>

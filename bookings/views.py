@@ -19,6 +19,7 @@ def create_booking(request):
 
             booking = form.save(commit=False)
             booking.name = request.user
+            print("\n New line here", booking.customer_name)
             booking.save()
 
             messages.success(request, 'Booking created successfully!')
