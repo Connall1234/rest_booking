@@ -40,5 +40,3 @@ class RegisterUserForm(UserCreationForm):
                   'email',
                   'password1',
                   'password2')
-
-#PEP8 Checked 

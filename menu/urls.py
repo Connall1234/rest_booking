@@ -5,4 +5,3 @@ from . import views
 urlpatterns = [
     path('menu/', views.menu, name='menu'),
 ]
-#pep8checked

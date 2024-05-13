@@ -63,4 +63,3 @@ class Migration(migrations.Migration):
             ],
         ),
     ]
-#pep8 checked

@@ -19,10 +19,9 @@ class UserAdmin(BaseUserAdmin):
         'last_name',
         'is_staff',
         'date_joined',
- )
+    )
 
 
 # Reregister UserAdmin
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
-#pep8checked

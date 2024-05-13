@@ -8,4 +8,3 @@ class AccountHoldersConfig(AppConfig):
 
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'account_holders'
-#pep8 checked

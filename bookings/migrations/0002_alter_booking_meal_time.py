@@ -32,4 +32,3 @@ class Migration(migrations.Migration):
             ),
         ),
     ]
-#pep8checked

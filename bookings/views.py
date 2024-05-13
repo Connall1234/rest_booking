@@ -7,29 +7,19 @@ from django.contrib import messages
 from .models import Booking
 from .forms import BookingForm
 
+
 @login_required
 def create_booking(request):
     """View function to create a booking."""
     if request.method == 'POST':
-        print("Form Data:", request.POST)
 
         form = BookingForm(request.POST)
         if form.is_valid():
-            print("\nForm Data check two:", request.POST, "\n")
 
             booking = form.save(commit=False)
             booking.name = request.user
-            print("\n New line here", booking.customer_name)
-            print("\n New line here", booking.number_of_guests)
-            print("\n New line here", booking.meal_day)
-            print("\n New line here", booking.meal_time)           
 
             booking.save()
-
-            print("\n After save", booking.customer_name)
-            print("\n After save", booking.number_of_guests)
-            print("\n After save", booking.meal_day)
-            print("\n After save", booking.meal_time)           
 
             messages.success(request, 'Booking created successfully!')
             return redirect('booking_list')  # Change to to booking list page
@@ -37,12 +27,14 @@ def create_booking(request):
         form = BookingForm()
     return render(request, 'create_booking.html', {'form': form})
 
+
 @login_required
 def edit_booking(request, booking_id):
     """View function to edit a booking."""
     booking = get_object_or_404(Booking, pk=booking_id)
     if not request.user.is_superuser and booking.name != request.user:
-        messages.error(request, 'You do not have permission to edit this booking.')
+        messages.error(
+            request, 'You do not have permission to edit this booking.')
         return redirect('booking_list')  # Change to booking list page
     if request.method == 'POST':
         print("Form Data:", request.POST)
@@ -56,18 +48,21 @@ def edit_booking(request, booking_id):
         form = BookingForm(instance=booking)
     return render(request, 'edit_booking.html', {'form': form, 'booking': booking})
 
+
 @login_required
 def delete_booking(request, booking_id):
     """View function to delete a booking."""
     booking = get_object_or_404(Booking, pk=booking_id)
     if not request.user.is_superuser and booking.name != request.user:
-        messages.error(request, 'You do not have permission to delete this booking.')
+        messages.error(
+            request, 'You do not have permission to delete this booking.')
         return redirect('booking_list')  # Redirect to booking list page
     if request.user == request.user or request.user.is_superuser:
         booking.delete()
         messages.success(request, 'Booking deleted successfully!')
         return redirect('booking_list')  # Redirect to booking list page
     return render(request, 'booking_list.html', {'booking': booking})
+
 
 @login_required
 def booking_list(request):
@@ -93,6 +88,7 @@ def booking_list(request):
     return render(request, 'booking_list.html',
                   {'bookings': bookings, 'booking_list_result': booking_list_result})
 
+
 def filter_view(request):
     """View function to filter bookings."""
     qs = Booking.objects.all()
@@ -105,10 +101,8 @@ def filter_view(request):
     today = date.today()
     for booking in qs:
         booking.is_past_meal_day = booking.meal_day < today
-        print(booking.is_past_meal_day, booking.meal_day, today, "\nHelloooooo")
 
     context = {
         'queryset': qs
     }
     return render(request, "booking_list.html", context)
-#pep8check

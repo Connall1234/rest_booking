@@ -2,6 +2,7 @@
 from django import forms
 from .models import Booking
 
+
 class BookingForm(forms.ModelForm):
     """Form for creating and updating bookings."""
 
@@ -25,9 +26,10 @@ class BookingForm(forms.ModelForm):
         try:
             self.instance.clean()  # Trigger the model's clean method
         except ValidationError as e:
-            self.add_error(None, e.message)  # Add the model's validation error to the form
+            # Add the model's validation error to the form
+            self.add_error(None, e.message)
             if 'meal_time' in e.message_dict:
-                self.fields['meal_time'].widget.attrs.update({'class': 'meal-time taken'})
+                self.fields['meal_time'].widget.attrs.update(
+                    {'class': 'meal-time taken'})
 
         return cleaned_data
-    #pep8checked

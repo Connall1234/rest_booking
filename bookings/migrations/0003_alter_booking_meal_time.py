@@ -2,6 +2,7 @@
 
 from django.db import migrations, models
 
+
 class Migration(migrations.Migration):
     """Migration for altering meal_time field in Booking model."""
 
@@ -16,4 +17,3 @@ class Migration(migrations.Migration):
             field=models.TimeField(),
         ),
     ]
-#pep8 checked

@@ -7,5 +7,3 @@ class Migration(migrations.Migration):
     dependencies = [('bookings', '0006_alter_booking_special_occasion'),]
     operations = [migrations.RemoveField(
         model_name='booking', name='is_booked'),]
-
-#pep8checked

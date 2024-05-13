@@ -69,4 +69,3 @@ def register_user(request):
         form = RegisterUserForm()
 
     return render(request, 'authentication/register_user.html', {'form': form})
-#pep8 checked

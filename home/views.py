@@ -1,8 +1,8 @@
 """Module for our index URL."""
 from django.shortcuts import render
 
-"""To return our index URL."""
-def index(request):
-    return render(request, "index.html")
 
-#pep8checked
+def index(request):
+    """To return our index URL."""
+
+    return render(request, "index.html")
