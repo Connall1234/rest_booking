@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 
 class UserAdmin(BaseUserAdmin):
     """
-    Custom UserAdmin class to customize 
+    Custom UserAdmin class to customize
     the User model in the Django admin interface.
     """
     list_display = (

@@ -49,7 +49,7 @@ function confirmDelete() {
     return confirm("Are you sure you want to delete this booking?");
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+//document.addEventListener("DOMContentLoaded", function() {
     // Your JavaScript code goes here
-});
+//});
 
