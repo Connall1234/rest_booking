@@ -39,7 +39,7 @@
     line-height: 1.9;
 }
 
-.carousel-inner::before {
+/*.carousel-inner::before {
     content: '';
     position: absolute;
     width: 100%;
@@ -49,6 +49,7 @@
     background: rgba(0,0,0,0.7);
     z-index: 1;
 }
+*/
 
 .carousel-button {
     margin: 10px
