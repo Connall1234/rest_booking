@@ -22,28 +22,34 @@ $(document).ready(function() {
         
 // This will hide the first choice for the meal time dropdown element"
 var dropdown1 = document.getElementById("id_meal_time");
-dropdown1.options[0].style.display = "none"; 
+if (dropdown1) {
+    dropdown1.options[0].style.display = "none"; 
+}
+//This if statement is added, to avoid a console error on booking list page
 
 // This will hide the first choice for the special occasion dropdown element"
 var dropdown2 = document.getElementById("id_special_occasion");
-dropdown2.options[0].style.display = "none";
+if (dropdown2) {
+    dropdown2.options[0].style.display = "none"; 
+}
+//This if statement is added, to avoid a console error on booking list page
 
 // Add an event listener to the navbar toggler button
-document.querySelector('.navbar-toggler').addEventListener('click', function () {
+//document.querySelector('.navbar-toggler').addEventListener('click', function () {
     // Toggle the 'show' class on the collapsible navbar content
-    document.querySelector('#navbarNav').classList.toggle('show');
-});
+    //document.querySelector('#navbarNav').classList.toggle('show');
+//});
 
 // Close the navbar when a nav-link is clicked (optional)
-document.querySelectorAll('.nav-link').forEach(function (element) {
-    element.addEventListener('click', function () {
+//document.querySelectorAll('.nav-link').forEach(function (element) {
+   // element.addEventListener('click', function () {
         // Check if the collapsible navbar content is currently shown
-        if (document.querySelector('#navbarNav').classList.contains('show')) {
+        //if (document.querySelector('#navbarNav').classList.contains('show')) {
             // Hide the collapsible navbar content
-            document.querySelector('#navbarNav').classList.remove('show');
-        }
-    });
-});
+          //  document.querySelector('#navbarNav').classList.remove('show');
+        //}
+    //});
+//});
 // Add confirmation to our delete button
 function confirmDelete() {
     return confirm("Are you sure you want to delete this booking?");
