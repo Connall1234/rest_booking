@@ -115,6 +115,7 @@ USE_I18N = True
 
 USE_TZ = True
 
+# Enable Django compression
 COMPRESS_ENABLED = True
 COMPRESS_OFFLINE = True
 

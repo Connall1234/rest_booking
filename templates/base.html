@@ -3,30 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navigation Bar</title>
-    <!-- Bootstrap CSS CDN & our stylesheet -->
-        <!--Start here-->
-
-    <!--
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        -->
-        <!--
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-    -->
-    <!--
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    -->
+    <title>Carlo's Restaurant</title>
+    <meta name="description" content="Discover delicious dishes and book a table at [Your Restaurant Name]. Explore our menu and enjoy fine dining experiences.">
     {% load compress %}
     {% compress css %}
-
         <link rel="stylesheet" type="text/css" href="/static/css/style.css">
     {% endcompress %}
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
-
-
     {% load static %}
 </head>
 <!--This is our base template-->
@@ -64,7 +48,6 @@
                             Bookings
                             </a>
                             <div class="dropdown-menu bg-dark text-center p-2 fade" aria-labelledby="navbarDropdown">
-
                                 <a href="{% url 'create_booking' %}" class="nav-link text-white dropdown-navitems">Make a booking</a>
                                 <a href="{% url 'booking_list' %}" class="nav-link text-white dropdown-navitems">Manage a booking</a>
                             </div>
@@ -168,18 +151,5 @@
             </div>
         </div>
     </footer>
-    <!--End here-->
-    <!--
-    <script src="/static/js/script.js"></script>
-    -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-    -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.js"></script>
-    -->
-    <!--End here-->
-
 </section>
 </html>

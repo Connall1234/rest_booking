@@ -1,5 +1,4 @@
 {% extends "base.html" %} {% block content %}
-
 <!--Our index page-->
 <!--Our main image which is a carosuel-->
 <div class="bg-dark">
@@ -26,7 +25,7 @@
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="static/images/imagetwo.jpeg" class="d-block w-100" alt="Picture of waiter holding different dishes" importance="high">
+            <img src="static/images/imagetwo.jpeg" class="d-block w-100" alt="Picture of waiter holding different dishes">
             <div class="carousel-caption text-center d-none d-md-block">
               <h5>Fine Dining </h5>
               <p>An unforgettable fine dining journey.</p>
@@ -45,7 +44,6 @@
               src="static/images/images_three.jpg"
               class="d-block w-100"
               alt="Picture of waiter serving food"
-              importance="high"
             >
             <div class="carousel-caption d-none d-md-block">
               <h5>Fresh Ingredients.</h5>
@@ -73,7 +71,7 @@
                 Our friendly staff will cater to your needs.
               </p>
               <div class="carousel-button">
-                {% if user.is_authenticated %}
+               {% if user.is_authenticated %}
                 <a href="{% url 'create_booking' %}" class="btn btn-warning btn-rounded " data-mdb-ripple-init>Make a booking!</a>
                 {% else %}
                 <a href="{% url 'login' %}" class="btn btn-warning btn-rounded " data-mdb-ripple-init>Make a booking!</a>
@@ -107,7 +105,7 @@
         <div class="row">
           <div class="col-lg-4 col-md-12 col-12 ps-lg-5 mt-md-5">
             <div class="about-img">
-              <img alt="Image of pasta dish" class="img-fluid rounded" src="static/images/image_tenc.webp" importance="high">
+              <img alt="Image of pasta dish" class="img-fluid rounded" src="static/images/image_tenc.webp">
             </div>
           </div>
           <div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-5">
@@ -118,12 +116,7 @@
                 experiences. Our menu, thoughtfully curated by our team of skilled
                 chefs, celebrates the finest locally-sourced ingredients. Each dish
                 is a work of art, reflecting our commitment to quality and
-                innovation. With a warm and inviting ambiance, attentive staff, and
-                a passion for gastronomy, Carlos Fine Dining Restaurant invites you
-                to indulge in a truly memorable culinary journey. Whether it's a
-                romantic dinner for two or a celebration with friends and family, we
-                look forward to exceeding your expectations and creating moments to
-                savor.
+                innovation.
               </p>
               <div class="text-center text-sm-left text-md-start">
                 <a class="check-menu-button btn btn-warning" href="{% url 'menu' %}">Check out our menu!</a>
@@ -206,7 +199,7 @@
       </div>
     </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.js" defer></script>
 </div>
 {% endblock %}
