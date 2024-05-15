@@ -4,15 +4,15 @@
 
 * {
     font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+
     color: white;
   }
   
-/* Add spacing between sections  */
 .section-padding {
     padding: 50px 0;
 }
 
-/* Add specific spacing for menu sections  */
 .section-padding-menu {
     padding: 100px;
     margin-bottom: 0;
@@ -61,9 +61,11 @@
 }
 
 .light-box-images {
-    height: 200px;
-    width: 200px;
+    height: 200;
+    width: 200;
 }
+
+
 
 /* Our menu section */
 
@@ -89,6 +91,8 @@
     justify-content: space-between;
     position: relative;
   }
+  
+
   
   .menu .menu-dishes a {
     padding-right: 10px;
@@ -121,7 +125,7 @@
 
 /* Our a form styles */
 
-/* For create a booking forms, for the relevant fields */
+/* For create a booking forms */
 #id_special_occasion, #id_meal_day, #id_meal_time, #id_number_of_guests, #id_customer_name, #id_submit_button {
     background-color: #333;
     color: #fff; 
@@ -136,7 +140,8 @@
 }
 /* End create a booking form */
 
-/* For registering users, for relevant fields */
+/* For registering users */
+
 #id_username, #id_first_name, #id_last_name, #id_email, #id_password1, #id_password2 {
     background-color: #333;
     color: #fff; 
@@ -169,7 +174,6 @@
 
 /* Our styling for error messages */
 
-/* Adding important fields as they're previously overwritten  */
 .error_message_notes {
     margin: 100px auto;
     margin-bottom: 0;
@@ -185,7 +189,7 @@
 
 /* Our styling for error messages end */
 
-/*Our styling for messages, appearing on NavBar*/
+/*Our styling for messages*/
 
 .message_notes {
     padding: 2px;
@@ -199,12 +203,17 @@
     margin: 220px auto;
 }
 
-/* Our 404/500 page stylings */
+.search_form {
+    margin-top: 50px;
+}
+
+/* Our 404 page */
 
 .ourerror_page {
     height: 70vh;
     padding: 246px;
 }
+
 
 /* Our media queries */
 
@@ -231,10 +240,12 @@
     }
 
     /* This is to add an effect to the dropdown */
+
+    /* This is to add an effect to the dropdown */
     .dropdown-menu {
         display: block;
         opacity: 0;
-        transition: opacity 0.8s; 
+        transition: opacity 0.8s; /* Adjust the transition duration here */
     }
 
     .dropdown:hover .dropdown-menu {
@@ -244,7 +255,16 @@
     } 
 }
 
-/* For mid size to large screens  */
+
+/* For small screen queries */
+@media only screen and (min-width: 576px) {
+    /* This is to add some hover effects to our navbar */
+    .carousel_lrg_image_section img {
+        background-image: none !important;
+    }
+
+}
+
 @media only screen and (min-width: 768px) and (max-width: 991px) {
 	.carousel-caption {
 		bottom: 370px;
@@ -257,7 +277,7 @@
 	}
 
 }
-/*  For screens above mid-size */
+
 @media only screen and (max-width: 767px) {
 
 	.carousel-caption h5 {
@@ -297,8 +317,9 @@
     }
 
 }
-/*  For large screens */
+
 @media only screen and (min-width: 992px) {
+
 
     .check-menu-button {
         border: solid 5px red;
@@ -312,25 +333,28 @@
         padding: 5px;
         margin: 5px;
         font-size: 16px;
+        /* Add any other styling you want */
     }
-    /*  Had to add important as it was overwritten */
+    
     .form_container {
         width: 50% !important;
     }
+    
 
 }
 
-/*  For screens above small size */
+
 @media only screen and (max-width: 320px) {
+
 
     .carousel-button a {
         font-size: 10px;
         padding: 5px;
     }
     
+
 }
 
-/* For screens above mid-size  */
 @media only screen and (min-width: 768px) {
     .form_container {
         max-width: 60% !important; /*This is to override bootstrap, causing issues on create booking form */
@@ -342,6 +366,7 @@
     }
 
     /* Styles for create booking, register user, as font is too small */
+
     #id_special_occasion, #id_meal_day, #id_meal_time, #id_number_of_guests, #id_customer_name, #id_submit_button {
         font-size: 16px;
         width: 150px;
@@ -362,7 +387,8 @@
 
 }
 
-/*  For above large screens */
+
+
 @media only screen and (min-width: 1245px) {
     .form_container label {
         width: 20%;
@@ -373,10 +399,14 @@
         height: 100vh;
     }
 
+
 }
-/* For screens above small size  */
+
 @media only screen and (min-width: 425px) {
     #meal_day_filter {
         width: auto;
     }
 }
+
+
+    

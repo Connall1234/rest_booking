@@ -46,7 +46,8 @@ def edit_booking(request, booking_id):
             return redirect('booking_list')  # Change to booking list page
     else:
         form = BookingForm(instance=booking)
-    return render(request, 'edit_booking.html', {'form': form, 'booking': booking})
+    return render(request, 'edit_booking.html',
+                  {'form': form, 'booking': booking})
 
 
 @login_required
@@ -86,7 +87,8 @@ def booking_list(request):
             booking.is_past_meal_day = booking.meal_day < today
 
     return render(request, 'booking_list.html',
-                  {'bookings': bookings, 'booking_list_result': booking_list_result})
+                  {'bookings': bookings,
+                   'booking_list_result': booking_list_result})
 
 
 def filter_view(request):

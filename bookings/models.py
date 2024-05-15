@@ -9,12 +9,23 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 class Booking(models.Model):
     """Our booking model for customers to book meals"""
     name = models.ForeignKey(User, on_delete=models.CASCADE)
-    special_occasion = models.CharField(max_length=11, choices=[(
-        'None', 'None'), ('anniversary', 'Anniversary'), ('date', 'Date'), ('business', 'Business')])
+    SPECIAL_OCCASION_CHOICES = [
+        ('None', 'None'),
+        ('anniversary', 'Anniversary'),
+        ('date', 'Date'),
+        ('business', 'Business')
+    ]
+    special_occasion = models.CharField(
+        max_length=11,
+        choices=SPECIAL_OCCASION_CHOICES
+    )
     meal_day = models.DateField()
     number_of_guests = models.PositiveIntegerField(
         null=True,
-        validators=[MinValueValidator(1, message='Number of guests must be at least 1.'), MaxValueValidator(6, message='Number of guests cannot exceed 6.')])
+        validators=[MinValueValidator(1, message='Number of guests must be' +
+                    ' at least 1.'),
+                    MaxValueValidator(6, message='Number of guests' +
+                    ' cannot exceed 6.')])
 
     customer_name = models.CharField(max_length=50)
 
