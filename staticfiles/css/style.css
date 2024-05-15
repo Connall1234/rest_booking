@@ -4,8 +4,6 @@
 
 * {
     font-family: "Oswald", sans-serif;
-    font-optical-sizing: auto;
-
     color: white;
   }
   
@@ -61,11 +59,9 @@
 }
 
 .light-box-images {
-    height: 200;
-    width: 200;
+    height: 200px;
+    width: 200px;
 }
-
-
 
 /* Our menu section */
 
