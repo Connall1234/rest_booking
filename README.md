@@ -38,23 +38,23 @@ When it comes to UX, we can break this down into three parts: what we needed to 
 
 ### Home screen
 
-![Wireframe Home](images/newimages/boomtown/wireframe_home.png)
+![Wireframe Home](read_me_img/wireframe_home.png)
 
 ### Menu screen
 
-![Wireframe Home](images/newimages/boomtown/wireframe_menu.png)
+![Wireframe Home](read_me_img/wireframe_menu.png)
 
 ### Filter & manage booking screen
 
-![Wireframe Home](images/newimages/boomtown/wireframe_filter_managebookings.png)
+![Wireframe Home](read_me_img/wireframe_filter_managebookings.png)
 
 ### Login screen
 
-![Wireframe Home](images/finalfolder/wireframe_login.png)
+![Wireframe Home](read_me_img/wireframe_login.png)
 
 ### Create bookng screen
 
-![Wireframe Home](images/finalfolder/wireframe_createbooking.png)
+![Wireframe Home](read_me_img/wireframe_createbooking.png)
 
 ### What Was Needed
 
@@ -72,19 +72,19 @@ Lastly the features, when the user arrives on the page they’re firstly greeted
 
 Our navbar has a make a booking/manage a booking function, which can only take you to manage/make a booking if the user is logged in, otherwise it takes you to a login page, this is to incentivise the user to sign up.
 
-![Navbar LRG](images/navbar_largescreen.png)
+![Navbar LRG](read_me_img/navbar_largescreen.png)
 
-![Navbar Small](images/images1/nav_sml.png)
+![Navbar Small](read_me_img/images1/nav_sml.png)
 
-![Navbar Small Expanded](images/images1/nav_expand_smal.png)
+![Navbar Small Expanded](read_me_img/images1/nav_expand_smal.png)
 
 ### **Carosuel**
 
 Back on the home page we first introduce the user to a carousel image which has different pictures of the restaurant and has a make a booking button on each image, similar to the Navbar button which will take the user to the make a booking page, unless they’re not logged in which otherwise will take them to the login page.
 
-![Carousel LRG](images/carousel_img_lrg.png)
+![Carousel LRG](read_me_img/carousel_img_lrg.png)
 
-![Carousel SML](images/home_carousel_mobile.png)
+![Carousel SML](read_me_img/home_carousel_mobile.png)
 
 Our carousel image also has a shadow/dark tint over the original image, this is to accentuate the writing that is on the image and to also expand on the dark/light theme of the page.
 
@@ -92,71 +92,71 @@ Our carousel image also has a shadow/dark tint over the original image, this is 
 
 Next we have a short about us section to give the user a bit of information about the restaurant and what they have to offer, which also has a button for the user to view the menu.
 
-![About Us Section LRG](images/finalfolder/about_mobile.png) 
+![About Us Section LRG](read_me_img/finalfolder/about_mobile.png) 
 
-![About Us Section SML](images/finalfolder/about_desktop.png) 
+![About Us Section SML](read_me_img/finalfolder/about_desktop.png) 
 
 ### **Customer reviews**
 
 The feature after this is our customer reviews section, we’ve included three different customers and the reviews that they’ve recently made.
 
-![Customer Reviews LRG](images/customer_lrg.png)
+![Customer Reviews LRG](read_me_img/customer_lrg.png)
 
-![Customer Reviews SML](images/images1/customer_small.png)
+![Customer Reviews SML](read_me_img/customer_small.png)
 
 ### **Footer**
 
 The last feature for this page is our footer section, it includes another small bio about the restaurant, a phone number, address and email contact, and lastly some social media links you can reach the restaurant on.
 
-![Footer Section LRG](images/footer_lrg.png) 
+![Footer Section LRG](read_me_img/footer_lrg.png) 
 
-![Footer Section SML](images/images1/footer_small.png)
+![Footer Section SML](read_me_img/footer_small.png)
 
 ### **Gallery**
 
 We also have a small gallery section of different food/drink images, this is a Bootstrap feature and allows the user to click into an image and click through them all.
 
-![Gallery LRG](images/gallery_lrg.png)
+![Gallery LRG](read_me_img/gallery_lrg.png)
 
-![Gallery SML](images/images1/gallery_small.png)
+![Gallery SML](read_me_img/gallery_small.png)
 
-![Gallery When opened](images/images1/open_gallery_small.png)
+![Gallery When opened](read_me_img/open_gallery_small.png)
 
 ### **Menu**
 
 Our menu page is our next feature, which includes a starter, main, and dessert section, each has a title, price and description.
 
-![Menu LRG](images/finalfolder/menu_mobile1.png)
+![Menu LRG](read_me_img/menu_mobile1.png)
 
-![Menu SML](images/finalfolder/menu_desktop.png)
+![Menu SML](read_me_img/menu_desktop.png)
 
 ### **Login**
 
 Our login page has a username and password for the user to log in with, as well as a link they can click if they would like to register, which takes us to that page.
 
-![Login Page](images/images1/login_small.png)
+![Login Page](read_me_img/login_small.png)
 
 ### **Registration**
 
 Here they can place information such as username, first name, password, email. We’ve added a feature that comes with Django forms that the user must fill in each field or they cannot progress, and that they must type their password twice to avoid any mistakes they may make. We also have a small list of rules they need to follow to make sure their account is secure (like not having their password too short, or common).We have error messages that will appear if any of these mistakes are made, for the user to know where they went wrong.
 
-![Registration LRG](images/register_lrg.png)
+![Registration LRG](read_me_img/register_lrg.png)
 
-![Registration SML](images/images1/resigster_small.png)
+![Registration SML](read_me_img/resigster_small.png)
 
 ### **Login Success**
 
 Next after a successful login or sign up our user will be taken back to the home page, and a message will appear in the Navbar to tell them they have successfully logged in, these messages will also appear if they have not been able to login, if they have registered, if they have made a booking or edited/deleted one.
 
-![Login Success](images/images1/login_success_small.png)
+![Login Success](read_me_img/login_success_small.png)
 
 ### **Create booking**
 
 When the user has logged in they are able to book a table, they have various different choices such as Meal time, special occasion, Meal day, Guests, and their name, we've added options for times and ocassions and added a datepicker for the day.
 
-![Create Booking LRG](images/booking_form_lrg.png)
+![Create Booking LRG](read_me_img/booking_form_lrg.png)
 
-![Create Booking SML](images/images1/bookingfrm_small.png)
+![Create Booking SML](read_me_img/bookingfrm_small.png)
 
 ### **Manage booking**
 
@@ -164,33 +164,33 @@ After signing in they are able to make a booking, we have different fields that 
 
 After the booking is made the user will be redirected to the manage booking page where they can see their bookings, and if none exist they will be told there are none, but be given a button to click if they would like to book a meal.
 
-![Manage Booking LRG](images/booking_list_lrg.png)
+![Manage Booking LRG](read_me_img/booking_list_lrg.png)
 
-![Manage Booking SML](images/images1/booking_list_small.png)
+![Manage Booking SML](read_me_img/booking_list_small.png)
 
 ### **Edit and delete booking**
 
 On this page they’re able to view their bookings with the relevant information, and also edit and delete their bookings.
 
-![Edit/Delete Booking LRG](images/edit_del_lrg.png)
+![Edit/Delete Booking LRG](read_me_img/edit_del_lrg.png)
 
 ### **Edit booking**
 
 The edit booking will take them to another page where all their information is already filled in for them, and they’re able to change any information about the booking, this also has a the same error messages as the create a booking, if any information is entered incorrectly, after they’ve updated the booking the message will let them know it’s been updated successfully, next the delete button, once clicked they will be able to delete bookings, and a message will appear.
 
-![Edit Booking](images/newimages/edit_booking.png)
+![Edit Booking](read_me_img/edit_booking.png)
 
 ### **Expired bookings**
 
 Another feature for this page is that any bookings that have expired (for example the date has passed) they will no longer be able to edit the bookings, only delete them, this is to ensure that users cannot keep making the same booking.
 
-![Expired Bookings LRG](images/exp_booking_lrg.png)
+![Expired Bookings LRG](read_me_img/exp_booking_lrg.png)
 
 ### **Datepicker**
 
 When using the create/editing page, we’ve added a datepicker for the meal day field, we’ve also added a feature that does not allow the person to pick dates in the past as this would cause errors (the datepicker you're seeing allows past dates, this is only for admin filter), other datepickers do not allow this.
 
-![Datepicker](images/images1/datepicker_small.png)
+![Datepicker](read_me_img/datepicker_small.png)
 
 ### **Filter bookings**
 
@@ -198,9 +198,9 @@ The next thing to mention is the manage a booking page from the admin/superuser 
 
 The filter bar is also a datepicker and is able to go into the past dates, in case the admin wanted to check on how many bookings they had on a specific date.
 
-![Admin Filter Search button disabled, LRG](images/filter_search_dis_lrg.png)
+![Admin Filter Search button disabled, LRG](read_me_img/filter_search_dis_lrg.png)
 
-![Admin Filter Search button enabled, LRG](images/filter_search_enab_lrg.png)
+![Admin Filter Search button enabled, LRG](read_me_img/filter_search_enab_lrg.png)
 
 Once a date is picked they can search this date and see all the bookings for that date, this bar cannot be entered manually to stop any wrong inputs or errors being searched. 
 
@@ -210,21 +210,21 @@ There is also a reset feature which will bring the user back to the original man
 
 We’ve also added pagination to the manage a booking view, so the user can have their bookings laid out in a better way.
 
-![Pagination LRG](images/pagnation_lrg.png)
+![Pagination LRG](read_me_img/pagnation_lrg.png)
 
-![Pagination SML](images/images1/pagnation_small.png)
+![Pagination SML](read_me_img/pagnation_small.png)
 
 ### **404 Page**
 
 We have also styled the 404 page, to add to the UX.
 
-![404](images/error_404.png)
+![404](read_me_img/error_404.png)
 
 ### **Confirm delete**
 
 Lastly, we included a confirmation button for the delete page, just in case the user clicks the delete button accidentally.
 
-![Delete Confirmation](images/newimages/delete_confirm.png)
+![Delete Confirmation](read_me_img/delete_confirm.png)
 
 Next we can discuss some features that we would like to add.
 
@@ -302,21 +302,21 @@ When it comes to testing we had someone manually test the site, we tried to make
 
 We also tried to create users that had weak passwords, and not typed in their passwords the same alongside any other errors that would come from incorrect user input.
 
-![Register test](images/error_registerwarning.png)
+![Register test](read_me_img/error_registerwarning.png)
 
 On the login page, we did the same and tried to put the information incorrectly.
 
-![Login test](images/error_loggingin.png)
+![Login test](read_me_img/error_loggingin.png)
 
 On the make a booking page, we tested the error handling of the page and tried to make bookings that were on the same time and day, and also input incorrect amounts of guests.
 
-![Create booking test - too little guest](images/error_bookingpast_toolittleguest.png)
+![Create booking test - too little guest](read_me_img/error_bookingpast_toolittleguest.png)
 
-![Create booking test - too many guest, and booking on same day and time](images/error_bookingsame_toomanyguest.png)
+![Create booking test - too many guest, and booking on same day and time](read_me_img/error_bookingsame_toomanyguest.png)
 
 On the edit a booking page, we tested the same to see if the bookings would be allowed to be made for the same day & time as others.
 
-![Edit booking test - same booking](images/editbook_errorfordoublebook.png)
+![Edit booking test - same booking](read_me_img/editbook_errorfordoublebook.png)
 
 We also couldn’t see the bookings that other users had made if we weren’t the superuser.
 
@@ -329,13 +329,13 @@ Lastly, we entered as the super user and edited/deleted bookings and checked if 
   - Sam, attempting to create a booking, selected a date and time that overlapped with an existing booking on the system.
   - Upon submission, Sam received an error message indicating a scheduling conflict.
   - The error prevented Sam from creating the invalid booking and prompted to choose a different date or time.
-  - ![Sams's testing](images/finalfolder/sam_story_1.png)
+  - ![Sams's testing](read_me_img/sam_story_1.png)
 
 - **Testing Unauthorized Access:**
   - Sam, as a logged-out user, attempted to access the "Create Booking" page without authentication.
   - Instead of accessing the page, Sam was redirected to the site's 404 error page, indicating access denied.
   - The error prevented unauthorized access, ensuring only authenticated users could create bookings.
-  - ![Sams's testing](images/finalfolder/sam_story_2.png)
+  - ![Sams's testing](read_me_img/sam_story_2.png)
 
 
 ### Emily's Stories:
@@ -343,7 +343,7 @@ Lastly, we entered as the super user and edited/deleted bookings and checked if 
   - Emily, a new user registering on the site, mistakenly typed different passwords in the "Password" and "Confirm Password" fields.
   - Upon submission, Emily received an error message indicating the passwords did not match.
   - The error prevented Emily from proceeding until she entered matching passwords.
-  - ![Emily's testing](images/finalfolder/emily_story_1.png)
+  - ![Emily's testing](read_me_img/emily_story_1.png)
 
 - **Attempting to Edit Another User's Booking:**
   - Emily attempted to edit a booking made by another user.
@@ -356,58 +356,58 @@ Lastly, we entered as the super user and edited/deleted bookings and checked if 
   - Max, a new user, attempted to register with a weak password.
   - Django's form validation system detected the weak password and prompted Max to choose a stronger one.
   - The error prevented Max from proceeding until he entered a stronger password.
-  - ![Max's testing](images/finalfolder/max_story_1.png)
+  - ![Max's testing](read_me_img/max_story_1.png)
 
 - **Testing Booking Past Dates:**
   - Max intentionally selected a past date while attempting to make a booking.
   - The system detected the attempt to book a past date and displayed an error message.
   - The error prevented Max from completing the booking process with an invalid date.
-  - ![Max's testing](images/finalfolder/max_story_2.png)
+  - ![Max's testing](read_me_img/max_story_2.png)
 
 
 # W3C Validation
 
 ### Home page 
 
-![W3C Validation](images/newimages/w3cvalidhome.png)
+![W3C Validation](read_me_img/w3cvalidhome.png)
 
 ### Menu
 
-![W3C Validation](images/newimages/w3c_valid_menu.png)
+![W3C Validation](read_me_img/w3c_valid_menu.png)
 
 ### Login
 
-![W3C Validation](images/newimages/w3cvalidlogin.png)
+![W3C Validation](read_me_img/w3cvalidlogin.png)
 
 ### Register
 
-![W3C Validation](images/newimages/w3cvalidregister.png)
+![W3C Validation](read_me_img/w3cvalidregister.png)
 
 ### Make booking
 
-![W3C Validation](images/newimages/w3cvalidcreatebookinginput.png)
+![W3C Validation](read_me_img/w3cvalidcreatebookinginput.png)
 
 ### Manage booking
 
-![W3C Validation](images/newimages/w3cvalidmanagebookinginput.png)
+![W3C Validation](read_me_img/w3cvalidmanagebookinginput.png)
 
 ### Edit booking
 
-![W3C Validation](images/newimages/w3cvalideditbookinput.png)
+![W3C Validation](read_me_img/w3cvalideditbookinput.png)
 
 ### Filter view
 
-![W3C Validation](images/newimages/w3cvalidfilter.png)
+![W3C Validation](read_me_img/w3cvalidfilter.png)
 
 ### CSS WC3
 
-![W3C Validation CSS](images/newimages/w3cvalidcss.png)
+![W3C Validation CSS](read_me_img/w3cvalidcss.png)
 
 ## PEP8 Checker
 
 We also tested for PEP8 Checker, for our Python code
 
-![PEP8 Checker](images/pep8checked.png)
+![PEP8 Checker](read_me_img/pep8checked.png)
 
 I would like to note that the migration files have not been all PEP8 compliant, but after checking with a CI representitive, I understand that any migration or empty files do not need to be PEP8 compliant.
 
@@ -417,57 +417,57 @@ Lastly, we checked our lighthouse score for our page, one thing to note is that 
 
 ### Home page 
 
-![Image mobile](images/finalfolder/home_mobile_lighthouse.png)
+![Image mobile](read_me_img/home_mobile_lighthouse.png)
 
-![Image desktop](images/finalfolder/lighthouse_home_lrg.png)
+![Image desktop](read_me_img/lighthouse_home_lrg.png)
 
 ### Menu
 
-![Image mobile](images/newimages/boomtown/lh_menu_mobile.png)
+![Image mobile](read_me_img/lh_menu_mobile.png)
 
-![Image desktop](images/newimages/boomtown/lh_menu_desktop.png)
+![Image desktop](read_me_img/lh_menu_desktop.png)
 
 ### Login
 
-![Image mobile](images/newimages/boomtown/lh_login_mobile.png)
+![Image mobile](read_me_img/lh_login_mobile.png)
 
-![Image desktop](images/newimages/boomtown/lh_login_desktop.png)
+![Image desktop](read_me_img/lh_login_desktop.png)
 
 ### Register
 
-![Image mobile](images/newimages/boomtown/lh_register_mobile.png)
+![Image mobile](read_me_img/lh_register_mobile.png)
 
-![Image desktop](images/newimages/boomtown/lh_register_desktop.png)
+![Image desktop](read_me_img/lh_register_desktop.png)
 
 ### Make booking
 
-![Image mobile](images/newimages/boomtown/lh_createbook_mobile.png)
+![Image mobile](read_me_img/lh_createbook_mobile.png)
 
-![Image desktop](images/newimages/boomtown/lh_createbook_desktop.png)
+![Image desktop](read_me_img/lh_createbook_desktop.png)
 
 ### Manage booking admin
 
-![Image mobile](images/newimages/boomtown/lh_managebook_admin_mobile.png)
+![Image mobile](read_me_img/lh_managebook_admin_mobile.png)
 
-![Image desktop](images/newimages/boomtown/lh_managebook_admin_desktop.png)
+![Image desktop](read_me_img/lh_managebook_admin_desktop.png)
 
 ### Manage booking user 
 
-![Image mobile](images/newimages/boomtown/lh_managebook_user_mobile.png)
+![Image mobile](read_me_img/lh_managebook_user_mobile.png)
 
-![Image desktop](images/newimages/boomtown/lh_managebook_user_desktop.png)
+![Image desktop](read_me_img/lh_managebook_user_desktop.png)
 
 ### Edit booking
 
-![Image mobile](images/newimages/boomtown/lh_editbook_mobile.png)
+![Image mobile](read_me_img/lh_editbook_mobile.png)
 
-![Image desktop](images/newimages/boomtown/lh_editbook_desktop.png)
+![Image desktop](read_me_img/lh_editbook_desktop.png)
 
 ### Filter view
 
-![Image mobile](images/newimages/boomtown/lh_filter_mobile.png)
+![Image mobile](read_me_img/lh_filter_mobile.png)
 
-![Image desktop](images/newimages/boomtown/lh_filter_desktop.png)
+![Image desktop](read_me_img/lh_filter_desktop.png)
 
 ---
 
