@@ -74,9 +74,9 @@ Our navbar has a make a booking/manage a booking function, which can only take y
 
 ![Navbar LRG](read_me_img/navbar_largescreen.png)
 
-![Navbar Small](read_me_img/images1/nav_sml.png)
+![Navbar Small](read_me_img/nav_sml.png)
 
-![Navbar Small Expanded](read_me_img/images1/nav_expand_smal.png)
+![Navbar Small Expanded](read_me_img/nav_expand_smal.png)
 
 ### **Carosuel**
 
@@ -92,9 +92,9 @@ Our carousel image also has a shadow/dark tint over the original image, this is 
 
 Next we have a short about us section to give the user a bit of information about the restaurant and what they have to offer, which also has a button for the user to view the menu.
 
-![About Us Section LRG](read_me_img/finalfolder/about_mobile.png) 
+![About Us Section LRG](read_me_img/about_mobile.png) 
 
-![About Us Section SML](read_me_img/finalfolder/about_desktop.png) 
+![About Us Section SML](read_me_img/about_desktop.png) 
 
 ### **Customer reviews**
 
