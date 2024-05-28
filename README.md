@@ -70,7 +70,7 @@ Lastly the features, when the user arrives on the page they’re firstly greeted
 
 ### **Navbar**
 
-Our navbar has a make a booking/manage a booking function, which can only take you to manage/make a booking if the user is logged in, otherwise it takes you to a login page, this is to incentivise the user to sign up.
+Our Navbar has a make a booking/manage a booking function, which can only take you to manage/make a booking if the user is logged in, otherwise it takes you to a login page, this is to incentivise the user to sign up.
 
 ![Navbar LRG](read_me_img/navbar_largescreen.png)
 
@@ -78,7 +78,7 @@ Our navbar has a make a booking/manage a booking function, which can only take y
 
 ![Navbar Small Expanded](read_me_img/nav_expand_smal.png)
 
-### **Carosuel**
+### **Carousel**
 
 Back on the home page we first introduce the user to a carousel image which has different pictures of the restaurant and has a make a booking button on each image, similar to the Navbar button which will take the user to the make a booking page, unless they’re not logged in which otherwise will take them to the login page.
 
@@ -152,7 +152,7 @@ Next after a successful login or sign up our user will be taken back to the home
 
 ### **Create booking**
 
-When the user has logged in they are able to book a table, they have various different choices such as Meal time, special occasion, Meal day, Guests, and their name, we've added options for times and ocassions and added a datepicker for the day.
+When the user has logged in they are able to book a table, they have various different choices such as Meal time, special occasion, Meal day, Guests, and their name, we've added options for times and occasions and added a datepicker for the day.
 
 ![Create Booking LRG](read_me_img/booking_form_lrg.png)
 
@@ -206,7 +206,7 @@ Once a date is picked they can search this date and see all the bookings for tha
 
 There is also a reset feature which will bring the user back to the original manage a booking page.
 
-### **Pagnation**
+### **Pagination**
 
 We’ve also added pagination to the manage a booking view, so the user can have their bookings laid out in a better way.
 
@@ -256,7 +256,7 @@ Adding a payment or takeaway reservation feature would also be something that wi
 1. [Django:](https://en.wikipedia.org/wiki/Django_(web_framework))
     - Django was the framework that we used for python.
 1. [CSS:](https://en.wikipedia.org/wiki/CSS)
-    - CSS was used for the styling of the web page alongiside Bootstrap.
+    - CSS was used for the styling of the web page alongside Bootstrap.
 1. [JavaScript:](https://en.wikipedia.org/wiki/JavaScript)
     - JavaScript was used with the front end part of this project.
 
@@ -409,7 +409,7 @@ We also tested for PEP8 Checker, for our Python code
 
 ![PEP8 Checker](read_me_img/pep8checked.png)
 
-I would like to note that the migration files have not been all PEP8 compliant, but after checking with a CI representitive, I understand that any migration or empty files do not need to be PEP8 compliant.
+I would like to note that the migration files have not been all PEP8 compliant, but after checking with a CI representative, I understand that any migration or empty files do not need to be PEP8 compliant.
 
 ## Lighthouse
 
@@ -497,7 +497,7 @@ Incorrect login, we've added a message in the Navbar for this error.
 
 Not allowed accces, if someone tries to access a create booking page, and they're not logged in, or any other page they aren't allow access, we have our 404 page
 
-### Registering erros
+### Registering errors
 
 Registering, we have Django's form errors working here, not allowing the user to leave any field blank, or not having both passwords be matching, or having passwords be similar. 
 
